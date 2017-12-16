@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>忘记密码</title>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+		<style type="text/css">
+			@media screen and (min-width:1680px ){
+				#g-logo{left:160px!important;top: 60px!important;}
+				#g-explain{left: 320px!important;top: 120px!important;}
+				#g-login{left: 1120px!important;top: -150px!important;}
+				#g-footer{top:20px!important; margin-left:8.3%!important;width: 1600px!important;}
+				#u-logintitle{font-size: 21px!important;}
+				#u-logintel{font-size: 16px!important;}
+				#u-loginpwd{font-size: 16px!important;}
+				#u-loginsmt{font-size: 17px!important;}
+				#u-loginfgt{font-size: 16px!important;}
+				#u-logincru{font-size: 16px!important;}
+				#u-loginagree{font-size: 16px!important;}
+				#g-explain p{font-size: 22px!important;}
+				#g-footer{font-size: 16px!important;top: 50px!important;}
+			}
+			@media screen and (max-width:1366px ){
+				#g-logo{left:113.8px!important;top: 30px!important;}
+				#g-explain{left: 227px!important;top: 80px!important;}
+				#g-login{left: 796.8px!important;top: -200px!important;width: 380px!important;height: 460px!important;}
+				#u-logintel{margin-top: 30px!important;}
+				#u-brand{margin-top: -5px!important;}
+				#g-footer{top: -150px!important;}
+				#u-logintel{padding-left: 55px!important;}
+				#u-loginpwd{padding-left: 55px!important;}
+				#u-loginyzm{padding-left: 55px!important;}
+				#u-loginhqyzm{left: 292px!important;top: 278px!important;}
+				#u-loginfgt{margin-top: 30px!important;}
+			}
+			body{padding: 0;margin: 0;font-size: 100%;background: url(img/indexbg.jpg) no-repeat;overflow: hidden;-webkit-font-smoothing: antialiased;}
+			#g-logo{position: relative;height: 80px;width:120px;text-align: center;left:120px;top: 30px;}
+			#u-logoimg{height: 60px;width: 120px;}
+			#u-logourl{display: inline;color: #fff;font-family: "微软雅黑";font-size: 14px;text-align: center;}
+			#g-explain{height: 200px;width: 510px;position:relative ;left: 240px;top: 70px;}
+			#g-explain p{color: #FFFFFF;font-family: "微软雅黑";font-size: 20px;margin-top: 10px;margin: 0;line-height: 45px;}
+			#g-explain p:nth-child(2){margin-top: 10px!important;}
+			#u-explaintitle{margin: 0;font-size: 40px!important;color: #fff;font-family: "微软雅黑";}
+			#g-login{font-family: "微软雅黑"; text-align: center; width: 420px;height: 512px;background-color:#fff;box-shadow:0 0 1px 1px #999999; position: relative;left: 840px;top: -180px;}
+			#u-logintitle{font-size: 20px; color: #666666;padding-top: 45px;}
+			#u-logintel{font-size: 14px;color: #666;width: 50px;padding-left: 76px;margin-top: 45px;}
+			#u-logintelipt{border: none;border-bottom: 1px solid #bbb;opacity: 100%;width: 260px;outline: none;}
+			#u-loginpwd{font-size: 14px;color: #666;width: 50px;padding-left: 76px;margin: 0;margin-top: 20px;}
+			#u-loginpwdipt{border: none;border-bottom: 1px solid #bbb;opacity: 100%;width: 260px;outline: none;margin-top: 15px;}
+			#u-loginyzm{font-size: 14px;color: #666;width: 50px;padding-left: 76px;margin: 0;margin-top: 20px;}
+			#u-loginyzmipt{ border: none;border-bottom: 1px solid #bbb;opacity: 100%;width: 260px;outline: none; margin-top: 15px;}
+			#u-loginhqyzm{position: absolute;left: 310px;top:288px; text-decoration: none;font-size: 14px;color: #4AB3FF;font-family: "微软雅黑";}
+			.u-loginclear{clear: both;}
+			#u-loginyzmerr{ text-decoration: none;font-size: 14px;color: red;font-family: "微软雅黑";}
+			#u-loginsmt{width: 260px;border-radius: 20px;opacity: 100%;height: 40px;background-color: #4AB3FF;border: none;outline: none;color: #fff;font-size: 16px;font-family: "微软雅黑";margin-top: 10px;}
+			#u-loginfgt{font-family: "微软雅黑"; text-decoration: none;color: #1E8AE8;font-size: 14px;color: #4AB3FF;margin-top: 60px;display: block;float: left;padding-left: 45px;font-weight: bold;}
+			#u-brand{color: #fff;font-family: "微软雅黑";font-size: 14px;position: relative;top: 30px;clear: both;}
+			#g-footer{position: relative;top: -90px; margin-left:8.3%;border:none;border-top:1px solid #fff;width: 1200px;height: 100px;font-family: "微软雅黑";font-size: 14px;color: #fff;}
+			#u-footer1{margin: 0;margin-top: 10px;float: left;}
+			#u-footer2{margin: 0;margin-top: 10px;float: right;}
+			#clear{clear: both;display: block;margin: 0;}
+			#u-footer3{margin: 0;float:left;}
+			#u-footer4{margin: 0;float:right;}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+					var tel=document.getElementById("u-logintelipt");
+					var teltext=document.getElementById("u-logintel");
+					var pwdtext=document.getElementById("u-loginpwd");
+					var pwd=document.getElementById("u-loginpwdipt");
+					var yzm=document.getElementById("u-loginyzmipt");
+					var yzmtext=document.getElementById("u-loginyzm");
+					tel.onfocus=function(){
+						this.setAttribute("style","transition:border-bottom linear .5s,-webkit-box-shadow linear .5s;border-bottom-color:#4AB3FF;");
+						teltext.setAttribute("style","transition:color linear .5s;color:#4AB3FF;");
+					}
+					tel.onblur=function(){
+						this.setAttribute("style","border-bottom-color: #bbb;")
+						teltext.setAttribute("style","color: #666;");
+					}
+					pwd.onfocus=function(){
+						this.setAttribute("style","transition:border-bottom linear .5s,-webkit-box-shadow linear .5s;border-bottom-color:#4AB3FF;");
+						pwdtext.setAttribute("style","transition:color linear .5s;color:#4AB3FF;");
+					}
+					pwd.onblur=function(){
+						this.setAttribute("style","border-bottom-color: #bbb;")
+						pwdtext.setAttribute("style","color: #666;");
+					}
+					yzm.onfocus=function(){
+						this.setAttribute("style","transition:border-bottom linear .5s,-webkit-box-shadow linear .5s;border-bottom-color:#4AB3FF;");
+						yzmtext.setAttribute("style","transition:color linear .5s;color:#4AB3FF;");
+					}
+					yzm.onblur=function(){
+						this.setAttribute("style","border-bottom-color: #bbb;")
+						yzmtext.setAttribute("style","color: #666;");
+					}
+					
+					/*获取验证码*/
+					var huoquyzm=document.getElementById("u-loginhqyzm");
+					var loginYzm=15;
+					var itv;
+					huoquyzm.onclick=function(){
+						huoquyzm.disabled=true;
+						huoquyzm.setAttribute("style","color: #bbb;");
+						huoquyzm.innerText=loginYzm+'s';
+						itv=setInterval(clock,1000);
+					}
+					function clock(){
+						loginYzm--;
+						if(loginYzm>0){
+							huoquyzm.setAttribute("style","color: #bbb;");
+							huoquyzm.innerText=loginYzm+'s';
+						}else{
+							huoquyzm.disabled=false;
+							huoquyzm.setAttribute('style','color: #4AB3FF;');
+							huoquyzm.innerText="获取";
+							loginYzm=15;
+							clearInterval(itv);
+						}
+					}
+					
+				}
+		</script>
+	</head>
+	<body>
+		<div id="g-logo">
+			<img id="u-logoimg" src="img/logo_white.svg" />
+			<div id="u-logourl">zhizhiyun.cn</div>
+		</div>
+		<div id="g-explain">
+			<span id="u-explaintitle">为管理而生</span>
+			<p>知之是一款免费的培训机构管理工具，内部集成</p>
+			<p>多样式功能模块，可解决您的机构在日常工作中</p>
+			<p>遇到的大部分问题。轻量、快捷、上手简单、功</p>
+			<p>指向明确，是您日常管理中的一大助力。</p>
+		</div>
+		<div id="g-login">
+			<form action="#" method="post">
+				<p id="u-logintitle">糟糕! 密码忘记了</p>
+				<p id="u-logintel">手机号</p>
+				<input type="text" id="u-logintelipt" />
+				<p id="u-loginpwd">新密码</p>
+				<input type="password" id="u-loginpwdipt" />
+				<p id="u-loginyzm">验证码</p>
+				<input type="text" id="u-loginyzmipt" />
+				<a href="#" id="u-loginhqyzm">获取</a>
+				<p id="u-loginyzmerr">验证码错误</p>
+				<input type="submit" value="修改" id="u-loginsmt"/><div class="u-loginclear"></div>
+				<a href="#" id="u-loginfgt">返回登录</a>
+			</form>
+			<p id="u-brand">©2017 zhizhiyun.cn</p>
+		</div>
+		<footer id="g-footer">
+			<p id="u-footer1">Powered by zhizhiyun.cn</p>
+			<p id="u-footer2">南京松果云数据服务有限公司</p><p id="clear"></p>
+			<p id="u-footer3">本产品已申请软件著作权，翻版必究</p>
+			<p id="u-footer4">北京松果互联信息科技有限公司</p>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>修改密码成功</title>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+		<script>
+			$(function(){
+				setTimeout(function(){
+					window.location="#";//登录成功跳转到index.jsp
+				},3000);
+			});
+		</script>
+		<style type="text/css">
+			@media screen and (min-width:1680px ){
+				#g-logo{left:160px!important;top: 60px!important;}
+				#g-explain{left: 320px!important;top: 120px!important;}
+				#g-login{left: 1120px!important;top: -150px!important;}
+				#g-footer{top:20px!important; margin-left:8.3%!important;width: 1600px!important;}
+				#g-explain p{font-size: 22px!important;}
+				#g-footer{font-size: 16px!important;top: 90px!important;}
+				#u-loginxgok{font-size: 20px!important;}
+				#u-loginwuxy{font-size: 16px!important;}
+			}
+			@media screen and (max-width:1366px ){
+				#g-logo{left:113.8px!important;top: 30px!important;}
+				#g-explain{left: 227px!important;top: 80px!important;}
+				#g-login{left: 796.8px!important;top: -200px!important;width: 452px!important;height: 382px!important;}
+				
+				#g-footer{top: -50px!important;}
+			}
+			body{padding: 0;margin: 0;font-size: 100%;background: url(img/indexbg.jpg) no-repeat;overflow: hidden;-webkit-font-smoothing: antialiased;}
+			#g-logo{position: relative;height: 80px;width:120px;text-align: center;left:120px;top: 30px;}
+			#u-logoimg{height: 60px;width: 120px;}
+			#u-logourl{display: inline;color: #fff;font-family: "微软雅黑";font-size: 14px;text-align: center;}
+			#g-explain{height: 200px;width: 510px;position:relative ;left: 240px;top: 70px;}
+			#g-explain p{color: #FFFFFF;font-family: "微软雅黑";font-size: 20px;margin-top: 10px;margin: 0;line-height: 45px;}
+			#g-explain p:nth-child(2){margin-top: 10px!important;}
+			#u-explaintitle{margin: 0;font-size: 40px!important;color: #fff;font-family: "微软雅黑";}
+			#g-login{ font-family: "微软雅黑"; text-align: center; width: 492px;height:422px;background-color:#fff;box-shadow:0 0 1px 1px #999999; position: relative;left: 840px;top: -180px;}
+			#u-loginxgok{font-size: 18px;color: #666;font-family: "微软雅黑";margin: 0;padding-top: 125px;}
+			#u-loginwuxy{font-size: 14px;color: #666;font-family: "微软雅黑";margin: 0;margin-top: 10px;}
+			#u-loginwuxy a{text-decoration: none;color: #4AB3FF;}
+			#m-loginxiaoguo{overflow: hidden; height: 93px;width: 350px;margin-left:71px ;margin-top: 50px;}
+			#u-loginxiaoguoload{ z-index: 997; margin-top: -30px;}
+			#u-loginxiaoguoline{position: relative;top: -115px;width: 700px;animation: myline 2s cubic-bezier(1,1,1,1); animation-iteration-count: infinite; display: block;margin-left: -350px;}
+			#u-loginxiaoguobandian{ z-index: 998; animation: mybandian 2s cubic-bezier(1,1,1,1); animation-iteration-count: infinite; display: block;margin-top: -66px;position: relative;width:700px ;margin-left: -350px;}
+			#u-loginxiaoguocar{z-index: 999; animation: mycar 0.5s cubic-bezier(1,1,1,1); animation-iteration-count: infinite; height: 130px;position:absolute;top:313px; display: block;margin-left: 200px;}
+			@keyframes mycar
+				{
+				0% {margin-top:-100px;}
+				25%{margin-top: -101px;}
+				50%{margin-top: -102px;}
+				75% {margin-top:-101px;}
+				100%{margin-top: -100px;}
+				}
+				
+			@keyframes mybandian{
+				0%{left: 0px;}
+				100%{left:350px;}
+			}	
+			@keyframes myline{
+				0%{left: 0px;}
+				100%{left:350px;}
+			}
+			#u-brand{color: #fff;font-family: "微软雅黑";font-size: 14px;position: relative;top: 30px;clear: both;}
+			#g-footer{position: relative;top: -20px; margin-left:8.3%;border:none;border-top:1px solid #fff;width: 1200px;height: 100px;font-family: "微软雅黑";font-size: 14px;color: #fff;}
+			#u-footer1{margin: 0;margin-top: 10px;float: left;}
+			#u-footer2{margin: 0;margin-top: 10px;float: right;}
+			#clear{clear: both;display: block;margin: 0;}
+			#u-footer3{margin: 0;float:left;}
+			#u-footer4{margin: 0;float:right;}
+		</style>
+		<script type="text/javascript">
+		</script>
+	</head>
+	<body>
+		<div id="g-logo">
+			<img id="u-logoimg" src="img/logo_white.svg" />
+			<div id="u-logourl">zhizhiyun.cn</div>
+		</div>
+		<div id="g-explain">
+			<span id="u-explaintitle">为管理而生</span>
+			<p>知之是一款免费的培训机构管理工具，内部集成</p>
+			<p>多样式功能模块，可解决您的机构在日常工作中</p>
+			<p>遇到的大部分问题。轻量、快捷、上手简单、功</p>
+			<p>指向明确，是您日常管理中的一大助力。</p>
+		</div>
+		<div id="g-login">
+			<p id="u-loginxgok">修改密码成功，返回登录中...</p>
+			<p id="u-loginwuxy">长时间无响应？<a href="">手动返回</a></p>
+			<div id="m-loginxiaoguo">
+				<img id="u-loginxiaoguoload" src="img/road.svg"/>
+				<img id="u-loginxiaoguobandian" src="img/bandian.svg"/>
+				<img id="u-loginxiaoguocar" src="img/car.svg"/>
+				<img id="u-loginxiaoguoline" src="img/line.svg"/>
+			</div>
+		</div>
+		<footer id="g-footer">
+			<p id="u-footer1">Powered by zhizhiyun.cn</p>
+			<p id="u-footer2">南京松果云数据服务有限公司</p><p id="clear"></p>
+			<p id="u-footer3">本产品已申请软件著作权，翻版必究</p>
+			<p id="u-footer4">北京松果互联信息科技有限公司</p>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,964 @@
+			@media screen and (min-width:1680px ){
+				#studentList {
+					width: 1266px!important;
+				}
+			}
+			/*媒体查询自适应学生添加按钮在不同屏幕*/
+			@media screen and (min-width:1680px ) {
+				.addStudent{
+					margin-left: 380px !important;
+				}
+			}
+			@media screen and (max-width:1680px){
+				#studentList{
+					
+				}
+			}
+			/*自适应分页*/
+			@media screen and (min-width:1680px ) {
+				#gong{
+					margin-left: 500px !important;
+				}
+				#page{
+					width: 1260px !important; 
+				}
+			}
+			.main{
+				width: 100%;
+				height: 970px;
+				background-color: #FCFCFC;
+				margin-left: 300px;
+				padding-top: 80px;
+			}
+			.main_title{
+				margin-top: 20px;
+				margin-left: 60px;
+				font-size: 16px;
+				font-family: "微软雅黑";	
+				color: #333333;
+				font-weight: bold;
+			}
+			/*下拉列表框*/
+			.studentNameSlt{
+				font-family: "微软雅黑";
+				height: 30px;
+				width: 105px;
+				outline: none;
+				margin-left: 60px;
+				appearance: none;
+				-moz-appearance:none;   
+     		    -webkit-appearance:none;  
+				background: url(../img/selectIcon.png) no-repeat 90px center;
+				margin-top:10px;
+				background-color: #fcfcfc;
+				border: 1px solid #D9D9D9;
+				padding-left:10px;
+			}
+			/*设置根据学生名字查询option文字居中*/
+			.studentNameSlt option{
+				font-size: 12px;
+			}
+			#studentList{
+				border: 1px solid #EEEEEE;
+				margin-left: 60px;
+				margin-top: 10px;
+				width: 940px;
+				overflow: auto;
+				background-color: white;
+			}
+			#studentList::-webkit-scrollbar  
+			{  
+			    width: 10px;  
+			    background-color: white;  
+			}  
+			#studentList::-webkit-scrollbar-thumb{
+				border-radius: 10px;
+				background-color: #E5E5E5
+			}
+			#studentList th{
+				height: 40px;
+				text-align: center;
+				border: 1px solid #EEEEEE;
+				font-family: "微软雅黑";
+				background-color: #f5f5f5;
+			}
+			#studentList td{
+				border: 1px solid #EEEEEE;
+				text-align: center;
+				height: 40px;
+				font-family: "微软雅黑";
+			}
+			.tableDetailMessBtn{
+				border-radius: 20px;
+				border: none;
+				background-color: #66cc99;
+				width: 70px;
+				height: 25px;
+				font-size: 12px;
+				box-shadow: 1px 1px 1px #BCD68D;
+				color: white;
+				font-family: "微软雅黑";
+				outline: none;
+			}
+			.btn2{
+				border-radius: 20px;
+				border: none;
+				font-size: 12px;
+				background-color: #6699cc;
+				width: 48px;
+				height: 25px;
+				box-shadow: 1px 1px 1px #BCD68D;
+				color: white;
+				font-family: "微软雅黑";
+				outline: none;
+			}
+			.onmouseover{
+				background-color: #7DB5E8;
+			}
+			.onclick{
+				background-color: #7DB5E8;
+			}
+			.onmouseover2{
+				background-color: #f2f2f2;
+			}
+			.onclick2{
+				background-color: #f2f2f2;
+			}
+			/*搜索框的设置*/
+			.inputserach{
+				height: 30px;
+				border: 1px solid #D9D9D9;
+				width: 142px;
+				margin-left: -5px;
+				background-color: #fcfcfc;
+				outline: none;
+				font-family: "微软雅黑";
+				background: url(../img/serach.png) no-repeat 120px center;
+			}
+			/*教师管理表格的颜色设置*/
+			#daiban{
+				color: red;
+			}
+			#daipaiban{
+				color:red;
+			}
+			/*课程筛选*/
+			#courseSlt{
+				outline: none;
+				background: url(../img/selectIcon.png) no-repeat 65px center;
+				width: 100px;
+				border: none;
+				height: 30px;
+				margin-left: 15px;
+				background-color: #FCFCFC;
+				overflow: hidden;
+				padding-right:44px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+				appearance: none;
+				-moz-appearance:none;  
+     		    -webkit-appearance:none;  
+			}
+			#courseSlt option{
+				font-size: 12px;
+			}
+			/*班级筛选*/
+			#classesSlt{
+				outline: none;
+				background: url(../img/selectIcon.png) no-repeat 65px center;
+				width: 100px;
+				background-color: #FCFCFC;
+				border: none;
+				height: 30px;
+				overflow: hidden;
+				padding-right:44px;
+				margin-left: -10px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+				appearance: none;
+				-moz-appearance:none;  
+     		    -webkit-appearance:none;
+			}
+			#classesSlt option{
+				font-size: 12px;
+			}
+			/*跟进时间*/
+			#lastwriter{
+				outline: none;
+				background: url(../img/selectIcon.png) no-repeat 65px center;
+				width: 100px;
+				border: none;
+				background-color: #FCFCFC;
+				height: 30px;
+				margin-left: -10px;
+				overflow: hidden;
+				padding-right:44px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+				appearance: none;
+				-moz-appearance:none;  
+     		    -webkit-appearance:none;
+			}
+			#lastwriter option{
+				font-size: 12px;
+			}
+			/*待续费*/
+			#waitrenewal{
+				outline: none;
+				background: url(../img/selectIcon.png) no-repeat 65px center;
+				width: 100px;
+				border: none;
+				margin-left: -10px;
+				background-color: #FCFCFC;
+				height: 30px;
+				overflow: hidden;
+				padding-right:44px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+				appearance: none;
+				-moz-appearance:none;  
+     		    -webkit-appearance:none;
+			}
+			#waitrenewal option{
+				font-size: 12px;
+			}
+			/*调整次数*/
+			#waitArrange{
+				outline: none;
+				background: url(../img/selectIcon.png) no-repeat 65px center;
+				width: 100px;
+				border: none;
+				height: 30px;
+				background-color: #FCFCFC;
+				overflow: hidden;
+				padding-right:44px;
+				margin-left: -10px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+				appearance: none;
+				-moz-appearance:none;  
+     		    -webkit-appearance:none;
+			}
+			#waitArrange option{
+				font-size: 12px;
+			}
+			/*重置按钮*/
+			.reset{
+				border: none;
+				border-radius: 20px;
+				color: white;
+				height: 25px;
+				font-size: 12px;
+				width: 48px;
+				background-color: #66CC99;
+				font-family: "微软雅黑";
+				margin-left: 5px;
+				outline: none;
+			}
+			/*学生添加*/
+			.addStudent{
+				height: 25px;
+				width: 70px;
+				font-size: 12px;
+				background-color: #fcfcfc;
+				box-shadow: none;
+				border: 1px solid #6699cc;
+				color: #6699CC;
+			    border-radius: 20px;
+			    margin-left: 58px;
+				font-family: "微软雅黑";
+				outline: none;
+			}
+			/*底部分页*/
+			#page{
+				width: 940px;
+				height: 30px;
+				margin-top: 10px;
+				margin-left: 60px;
+			}
+			/*上一页按钮*/
+			#indexPage{
+				height:25px;
+				width: 60px;
+				border-radius: 20px;
+				background-color: #FCFCFC;
+				border: 1px solid #666666;
+				outline: none;
+				font-size: 12px;
+				color:#666666;
+				font-family: "微软雅黑";
+			}
+			.pageNum{
+				display: inline;
+				margin-left: 18px;
+				font-size: 14px;
+				color: #666666;
+			}
+			#nextPage{
+				height:25px;
+				width: 60px;
+				border-radius: 20px;
+				background-color: #FCFCFC;
+				border: 1px solid #6699cc;
+				outline: none;
+				font-size: 12px;
+				color:#6699cc;
+				margin-left: 18px;
+				font-family: "微软雅黑";
+			}
+			#goal{
+				display: inline;
+				margin-left: 18px;
+				font-size: 14px;
+				color: #6699cc;
+			}
+			#pageIpt{
+				height: 30px;
+				width: 50px;
+				display: inline;
+				margin-left: 18px;
+				font-size: 14px;
+				background-color: #FCFCFC;
+				color: #666666;
+				text-align: center;
+				border: 1px solid #666666;
+				outline: none;
+			}
+			/*当前页*/
+			.currPage{
+				display: inline;
+				margin-left: 18px;
+				font-size: 14px;
+				color: #6699cc;
+			}
+			.notCurrPage{
+				display: inline;
+				margin-left: 18px;
+				font-size: 14px;
+				color: #666666;
+			}
+			/*实现导航栏1的效果*/
+			.banner1 a li:hover {
+				text-decoration: none;
+				background-color: #7DB5E8 !important;
+			}
+			.banner1 a li:visited{
+				text-decoration: none;
+				background-color: #7DB5E8 !important;
+			}
+			
+			.banner1 a li:active{
+				text-decoration: none;
+				background-color: #7DB5E8 !important;
+			}
+			/*实现导航栏二的效果*/
+			.banner2 a li:hover {
+				text-decoration: none;
+				background-color: #f2f2f2 !important;
+			}
+			.banner2 a li:visited{
+				text-decoration: none;
+				background-color: #f2f2f2 !important;
+			}
+			
+			.banner2 a li:active{
+				text-decoration: none;
+				background-color: #f2f2f2 !important;
+			}
+			/*分页右下角*/
+			#gong{
+				margin-left: 200px;
+				display: inline;
+				font-size: 14px;
+				color: #666666;
+				font-family: "微软雅黑";
+			}
+			#gongPage{
+				display: inline;
+				font-size: 14px;
+				color: #666666;
+				font-family: "微软雅黑";
+			}
+			/*这两个是默认选中状态*/
+			#currChooseBanner1{
+				background-color: #7DB5E8 !important;
+			}
+			#currChooseBanner2{
+				background-color: #f2f2f2 !important;
+			}
+			/*学生添加窗口、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、*/
+			#addStuContent{
+				width: 900px;
+				height: 500px;
+				border-radius:0;
+				position: fixed;
+				top:50%;
+				left: 0;
+				right: 0;
+				margin: -250px auto 0 auto;
+			}
+			/*添加学生头部div*/
+			#addStuHeader{
+				height: 50px;
+				width: 100%;
+				border-bottom: 1px solid #E3E3E3;
+			}
+			/*添加学生框标题*/
+			#addStuHeaderTitle{
+				font-size: 16px;
+				line-height: 50px;
+				font-family: "微软雅黑";
+				margin-left: 20px;
+				display: inline;
+			}
+			#addStuHeaderTitleExplain{
+				font-size: 12px;
+				line-height: 50px;
+				display: inline;
+				font-family: "微软雅黑";
+				margin-left: 5px;
+				color: red;
+			}
+			#addStuHeaderTitleExplain:after{
+				font-size: 12px;
+				line-height: 50px;
+				display: inline;
+				font-family: "微软雅黑";
+				margin-left: 5px;
+				color: #666666;
+				content: "为必填项";
+			}
+			/*头部关闭按钮*/
+			#closeBtn{
+				float: right;
+				height: 20px;
+				width: 20px;
+				position: absolute;
+				right: 15px;
+				top:15px;
+			}
+			
+			/*.........，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，*/
+			/*.........，，，，，，，，，，，，，，，，，，，，难过难过，，，，，，，，，，，、、、、、、、、、，，，，，，，，，，*/
+			/*学生添加模态框*/
+			#myModal{
+			   	z-index:1000; 
+				display:none;
+				width: 900px;
+				background-color: white;
+				height: 500px;
+				position: fixed;
+				top:50%;
+				left: 0;
+				right: 0;
+				margin: -250px auto 0 auto;
+			}
+			/*表格详细信息模态框*/
+			#tableDetailMessModel{
+				z-index:1000; 
+				display:none;
+				width: 900px;
+				background-color: white;
+				height: 500px;
+				position: fixed;
+				top:50%;
+				left: 0;
+				right: 0;
+				margin: -250px auto 0 auto;
+			}
+			#mask {
+				height: 100%;
+				width: 100%;
+				background:  rgba(0,0,0,.5);
+				z-index: 999;
+				position: fixed;
+				display: none;
+			}
+			/*.........，，，，，，，，，，，，，，，，，，，，难过难过，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，*/
+			/*////////////////////////////////////////////////////////////////////////学生管理表格详细信息按钮弹出框样式、、、、、、、*/	
+			/*详细信息模态框header*/
+			#tableDetailMessModelHeader{
+				width: 100%;
+				height: 48px;
+				border-bottom: 1px solid #e6e6e6;
+			}
+			#tableDetailMessModelBanner{
+				width: 300px;
+				height: 100%;
+			}
+			#tableDetailMessModelBanner li{
+				list-style: none;
+				display: inline;
+				font-size: 16px;
+				font-family: "微软雅黑";
+				color: #666666;
+			}
+			#tableDetailMessBannerLi1{
+				position: absolute;
+				height: 49px;
+				width: 100px;
+				text-align: center;
+				left: 10px;
+				top:8px;
+				line-height: 42px;
+			}
+			.tableDetailMessBannerLi0{
+				color: #1E8AE8 !important;
+				border-bottom: 2px solid #1E8AE8;
+			}
+			#tableDetailMessBannerLi2{
+				position: absolute;
+				height: 49px;
+				width: 100px;
+				top:8px;
+				text-align: center;
+				left: 110px;
+				line-height: 42px;
+			}
+			#tableDetailMessBannerLi3{
+				position: absolute;
+				height: 49px;
+				top:8px;
+				width: 100px;
+				text-align: center;
+				left: 210px;
+				line-height: 42px;
+			}
+			#tableDetailMessModelBanner a li:hover {
+				text-decoration: none;
+				color: #1E8AE8;
+				border-bottom:2px solid #1E8AE8;
+			}
+			#tableDetailMessModelBanner a li:visited{
+				text-decoration: none;
+			}
+			#tableDetailMessModelBanner a li:active{
+				text-decoration: none;
+			}
+			#tableDetailMessModelCloseBtn{
+				float: right;
+				height: 20px;
+				width: 20px;
+				position: absolute;
+				right: 15px;
+				top:15px;
+			}
+			/*表格弹出模态框详细信息正文main*/
+			#tableDetailMessModelMain{
+				height: 440px;
+				width: 100%;
+			}
+			/*学生姓名*/
+			#tableDetailMessModelMainStuName{
+				font-size: 14px;
+				color: #666666;
+				position: absolute;
+				font-family: "微软雅黑";
+				display: inline;
+				left: 60px;
+				top:80px;
+			}
+			#tableDetailMessModelMainStuNameIpt{
+				outline: none;
+				border:1px solid #e5e5e5;
+				height: 35px;
+				width: 100px;
+				position: absolute;
+				display: inline;
+				left: 120px;
+				top:73px;
+			}
+			/*家长姓名*/
+			#tableDetailMessModelMainParName{
+				font-size: 14px;
+				color: #666666;
+				position: absolute;
+				font-family: "微软雅黑";
+				display: inline;
+				left: 260px;
+				top:80px;
+			}
+			#tableDetailMessModelMainParNameIpt{
+				outline: none;
+				border:1px solid #e5e5e5;
+				height: 35px;
+				width: 100px;
+				position: absolute;
+				display: inline;
+				left: 320px;
+				top:73px;
+			}
+			/*在读年级*/
+			#tableDetailMessModelMainCurrGrade{
+				font-size: 14px;
+				color: #666666;
+				position: absolute;
+				font-family: "微软雅黑";
+				display: inline;
+				left: 490px;
+				top:80px;
+			}
+			.tableDetailMessModelMainCurrGradeSlt{
+				font-family: "微软雅黑";
+				height: 35px;
+				width: 100px;
+				outline: none;
+				appearance: none;
+				-moz-appearance:none;   
+     		    -webkit-appearance:none;  
+				background: url(../img/selectIcon.png) no-repeat 80px center;
+				border: 1px solid #D9D9D9;
+				padding-left:10px;
+				position: absolute;
+				left: 550px;
+				top:73px;
+				overflow: hidden;
+				padding-right:40px;
+			}
+			/*学生状态*/
+			#tableDetailMessModelMainStuState{
+				font-size: 14px;
+				color: #666666;
+				position: absolute;
+				font-family: "微软雅黑";
+				display: inline;
+				left: 680px;
+				top:80px;
+			}
+			.tableDetailMessModelMainStuStateSlt{
+				font-family: "微软雅黑";
+				height: 35px;
+				width: 100px;
+				outline: none;
+				appearance: none;
+				-moz-appearance:none;   
+     		    -webkit-appearance:none;  
+				background: url(../img/selectIcon.png) no-repeat 80px center;
+				border: 1px solid #D9D9D9;
+				padding-left:10px;
+				position: absolute;
+				left:744px;
+				top:73px;
+				overflow: hidden;
+				padding-right:40px;
+			}
+			/*联系电话*/
+			#tableDetailMessModelMainTel{
+				font-size: 14px;
+				color: #666666;
+				position: absolute;
+				font-family: "微软雅黑";
+				display: inline;
+				left: 60px;
+				top:140px;
+			}
+			#tableDetailMessModelMainTelIpt{
+				outline: none;
+				border:1px solid #e5e5e5;
+				height: 35px;
+				width: 300px;
+				position: absolute;
+				display: inline;
+				left: 120px;
+				top:133px;
+			}
+			/*显示号码超链接*/
+			#tableDetailMessModelMainTelDisplay{
+				text-decoration: none;
+				font-size: 12px;
+				color: #1E8AE8;
+				position: absolute;
+				font-family: "微软雅黑";
+				display: inline;
+				left: 355px;
+				cursor: pointer;
+				top:141px;
+			}
+			/*备注信息*/
+			#tableDetailMessModelRemarkMess{
+				font-size: 14px;
+				color: #666666;
+				position: absolute;
+				font-family: "微软雅黑";
+				display: inline;
+				left: 490px;
+				top:140px;
+			}
+			#tableDetailMessModelRemarkMessIpt{
+				outline: none;
+				border:1px solid #e5e5e5;
+				height: 35px;
+				width: 294px;
+				position: absolute;
+				display: inline;
+				left: 550px;
+				top:133px;
+			}
+			/*报课信息*/
+			#tableDetailMessModelChooseMess{
+				font-size: 14px;
+				color: #666666;
+				position: absolute;
+				font-family: "微软雅黑";
+				display: inline;
+				left: 60px;
+				top:210px;
+			}
+			/*设置单击表格详细信息弹出的模态框详细信息选项卡表格设置*/
+			#tableDetailMessModelMainTab{
+				border: 1px solid #E5E5E5 !important;
+				color: #666666;
+				width: 719px;
+			}
+			/*表格外面套的div*/
+			#tableDetailMessModelMainTabOutDiv{
+				overflow: auto;
+				height: 220px;
+				width: 719px;
+				position: absolute;
+				left: 120px;
+				top: 210px;
+				overflow-x: hidden;
+			}
+			#tableDetailMessModelMainTabOutDiv::-webkit-scrollbar  
+			{  
+			    width: 10px;  
+			    background-color: white;  
+			}  
+			#tableDetailMessModelMainTabOutDiv::-webkit-scrollbar-thumb{
+				border-radius: 10px;
+				background-color: #E5E5E5
+			}
+			#tableDetailMessModelMainTab td{
+				font-size: 12px;
+				color: #666666;
+				height: 30px !important;
+				text-align: center;
+				border: 1px solid #E5E5E5;
+				font-family: "微软雅黑";
+			}
+			#tableDetailMessModelMainTabCourseName{
+				width: 150px;
+			}
+			#tableDetailMessModelMainTabCourseCount{
+				width: 100px;
+			}
+			#tableDetailMessModelMainTabStrEndTime{
+				width: 164px;
+			}
+			#tableDetailMessModelMainTabClassTime{
+				width: 305px;
+			}
+			/*上课时间的单元格设置*/
+			#tableDetailMessModelMainTabClassTimeTd{
+				text-align: left !important;
+				padding-left: 10px;
+			}
+			#tableDetailMessModelMainTabClassTimeDay{
+				color: #1E8AE8;
+			}
+			/*学生调班第一个表格*/
+			#tableStuChangeClassTab1{
+				width: 400px;
+				position: absolute;
+				left: 40px;
+				top: 90px;
+				font-family: "微软雅黑";
+			}
+			#tableStuChangeClassTab1 td{
+				font-size: 12px;
+				color: #666666;
+				height: 30px;
+				text-align: center;
+				border: 1px solid #E5E5E5;
+				font-family: "微软雅黑";
+			}
+			#tableStuChangeClassTab1Tr{
+				border-color: inherit;
+				height:30px ;
+				background-color: #E5E5E5;
+				opacity: 0.8;
+			}
+			#tableStuChangeClassTab1Lab1{
+				font-size: 12px;
+				color: #666666;
+				font-family: "微软雅黑";
+				display: inline;
+			}
+			#tableStuChangeClassTab1Lab2{
+				font-size: 12px;
+				color: #666666;
+				font-family: "微软雅黑";
+				color: red;
+				display: inline;
+			}
+			/*调整这个单元格的宽度*/
+			#tableStuChangeClassTab1TrName{
+				text-align: center;
+				width: 100px;
+				font-weight: 400;
+				border: 1px solid #E5E5E5;
+			}
+			#tableStuChangeClassTab1TrCourseCount{
+				width: 170px;
+				text-align: center;
+				font-weight: 400;
+				border: 1px solid #E5E5E5;
+			}
+			#tableStuChangeClassTab1TrClasses{
+				width: 50px;
+				text-align: center;
+				font-weight: 400;
+				border: 1px solid #E5E5E5;
+			}
+			#tableStuChangeClassTab1TrTeach{
+				width: 100px;
+				text-align: center;
+				font-weight: 400;
+				border: 1px solid #E5E5E5;
+			}
+			/*鼠标悬停换色class*/
+			.onmouseoverAddClass{
+				background-color: #b4e7ff;
+			}
+			/*学生调班第二个表格*/
+			#tableStuChangeClassTab2{
+				width: 150px;
+				position: absolute;
+				left: 480px;
+				top: 90px;
+				font-family: "微软雅黑";
+				border: 1px solid red;
+			}
+			#tableStuChangeClassTab1TrName2{
+				text-align: center;
+				width: 50px;
+				font-weight: 400;
+				border: 1px solid #E5E5E5;
+			}
+			#tableStuChangeClassTab1TrCourseCount2{
+				width: 100px;
+				text-align: center;
+				font-weight: 400;
+				border: 1px solid #E5E5E5;
+			}
+			#tableStuChangeClassTab1TrClasses2{
+				width: 50px;
+				text-align: center;
+				font-weight: 400;
+				border: 1px solid #E5E5E5;
+			}
+			#tableStuChangeClassTab1TrTeach2{
+				width: 100px;
+				text-align: center;
+				font-weight: 400;
+				border: 1px solid #E5E5E5;
+			}
+			#tableStuChangeClassTab2 td{
+				font-size: 12px;
+				color: #666666;
+				height: 30px;
+				text-align: center;
+				border: 1px solid #E5E5E5;
+				font-family: "微软雅黑";
+			}
+			/*/*学生调班第二个表格另外加的*/
+			#tableStuChangeClassTab3{
+				width: 150px;
+				position: absolute;
+				left: 630px;
+				top: 90px;
+				font-family: "微软雅黑";
+				border: 1px solid red;
+			}
+			#tableStuChangeClassTab3 td{
+				font-size: 12px;
+				color: #666666;
+				height: 30px;
+				text-align: center;
+				border: 1px solid #E5E5E5;
+				font-family: "微软雅黑";
+			}
+			/*学生调班第三个表格修改内容*/
+			#tableStuChangeClassTab4OutDiv{
+				overflow: auto;
+				height: 150px;
+				width: 400px;
+				position: absolute;
+				left: 40px;
+				top: 310px;
+				overflow-x: hidden;
+			}
+			/*设置滚动条样式*/
+			#tableStuChangeClassTab4OutDiv::-webkit-scrollbar  
+			{  
+			    width: 10px;  
+			    background-color: white;  
+			}  
+			#tableStuChangeClassTab4OutDiv::-webkit-scrollbar-thumb{
+				border-radius: 10px;
+				background-color: #E5E5E5
+			}
+			#tableStuChangeClassTab4{
+				width: 410px;
+				font-family: "微软雅黑";
+				border: 1px solid red;
+			}
+			#tableStuChangeClassTab1TrName4{
+				text-align: center;
+				width: 209px;
+				font-weight: 400;
+				border: 1px solid #E5E5E5;
+			}
+			#tableStuChangeClassTab1TrCourseCount4{
+				text-align: center;
+				width: 209px;
+				font-weight: 400;
+				border: 1px solid #E5E5E5;
+			}
+			#tableStuChangeClassTab4 td{
+				font-size: 12px;
+				color: #666666;
+				height: 30px;
+				text-align: center;
+				border: 1px solid #E5E5E5;
+				font-family: "微软雅黑";
+			}
+			/**/
+			#tableStuChangeClassDiv{
+				display: none;
+			}
+			/*学生管理表格详细信息跟进信息选项卡*/
+			#tableGenJinMessDiv{
+				display: none;
+				height: 440px;
+				width: 100%;
+			}
+			#tableGenJinMessGenJinMessDiv{
+				position: absolute;
+				left: 40px;
+				top:88px;
+				width: 760px;
+				height: 150px;
+				overflow: auto;
+				overflow-x: hidden;
+			}
+			#tableGenJinMessGenJinMessDiv::-webkit-scrollbar  
+			{  
+			    width: 10px;  
+			    background-color: white;  
+			}  
+			#tableGenJinMessGenJinMessDiv::-webkit-scrollbar-thumb{
+				border-radius: 10px;
+				background-color: #E5E5E5
+			}
+			#tableGenJinMessBottomDiv{
+				position: absolute;
+				left: 40px;
+				top: 270px;
+				height: 136px;
+				width: 760px;
+				border: 1px solid #999999;
+				outline: none;
+				resize:none;
+			}

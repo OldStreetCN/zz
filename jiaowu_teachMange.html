@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>教务教师管理</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/jiaowu_teachMange.css" />
+		<link rel="stylesheet" href="css/jiaowu_common.css" />
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/jiaowu_teachMange.js"></script>
+		<script>
+			/*重置刷新*/
+			$(function(){
+				$("#reset").click(function(){
+					window.location.reload();
+				});
+			});
+			
+			/*教师添加*/
+			$(function(){
+					$(".addStudent").click(function(){
+						$("#myModal").css("display","block");
+						$("#mask").css("display","block");
+					});
+			});
+			/*单机模态框关闭按钮*/
+			$(function(){
+				$("#closeBtn").click(function(){
+					$("#myModal").css("display","none");
+					$("#mask").css("display","none");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!--教务教师管理头部导航栏-->
+		<div class="header">
+			<img src="img/logo_blue.svg" class="logo" />
+			<p style="display: inline" class="jianchen">松果教育&nbsp;&nbsp;</p>
+			<p style="display: inline" class="quanming">北京松果互联信息科技有限公司</p>
+			<img src="img/Cancel.png" class="cancel"  />
+			<img src="img/helpicon.png" class="helpIcon"  />
+			<img src="img/message.png"  class="messageIcon"/>
+			<p style="display: inline" class="suoyouzhe">所有者</p>
+			<p style="display: inline" class="userName">15810048447&nbsp;&nbsp;</p>
+		</div>
+		<div id="mask"></div>
+		<!--教务教师管理-->
+		<div class="banner1">
+			<ul>
+    			<a href="#"><li>首页</li></a>
+    			<a href="#"><li id="currChooseBanner1">教务</li></a>
+    			<a href="#"><li>办公</li></a>
+    			<a href="#"><li>运营</li></a>
+    			<a href="#"><li>数据</li></a>
+    			<a href="#"><li>扩展</li></a>
+    			<a href="#"><li>设置</li></a>
+    		</ul>
+		</div>
+		<!--教务教师管理左边第二个导航栏-->
+		<div class="banner2">
+			<ul>
+    			<p class="title">教务</p>
+    			<p class="title_context">根据需求选择您要管理的项。</p>
+    			<a id="currChooseBanner2" href="jiaowu_stuMange.html" ><li >学生管理</li></a>
+    			<a href="#"><li id="currChooseBanner2">教师管理</li></a>
+    			<a href="#"><li>班级管理</li></a>
+    			<a href="#"><li>课程管理</li></a>
+    			<a href="#"><li>日常课务</li></a>
+    		</ul>
+		</div>
+		<!--教师管理主内容区域-->
+		<div class="main">
+			<p class="main_title">教师管理</p>
+			<!--教师姓名查找-->
+			<select name="" class="studentNameSlt">
+				<option value="">教师姓名</option>
+				<option value="">手机号</option>
+			</select>
+			<input type="text" class="inputserach"/>
+			<!--课程筛选-->
+			<select id="courseSlt">
+				<option disabled selected style='display:none;'>课程筛选</option>
+				<option>体育</option>
+				<option>三年级语文下</option>
+			</select>
+			<!--班级筛选-->
+			<select id="classesSlt">
+				<option disabled selected style='display:none;'>班级筛选</option>
+				<option>三年级一班</option>
+				<option>三年级二班</option>
+			</select>
+			<!--最后跟进人-->
+			<select id="lastwriter">
+				<option disabled selected style='display:none;'>跟进时间</option>
+				<option>三年级一班</option>
+				<option>三年级二班</option>
+			</select>
+			<!--待续费-->
+			<select id="waitrenewal">
+				<option disabled selected style='display:none;'>待续费</option>
+				<option>三年级一班</option>
+				<option>三年级二班</option>
+			</select>
+			<!--待排班-->
+			<select id="waitArrange">
+				<option disabled selected style='display:none;'>待排班</option>
+				<option>三年级一班</option>
+				<option>三年级二班</option>
+			</select>
+			<!--重置按钮-->
+			<button class="reset" id="reset">重置</button>
+			<!--教师添加-->
+			<button class="addStudent">教师添加</button>
+			<div id="myModal">
+					<div id="addStuHeader">
+						<p id="addStuHeaderTitle">教师添加</p>
+						<p id="addStuHeaderTitleExplain">*</p>
+						<img src="img/button_close.png" id="closeBtn"/>
+					</div>
+					
+			</div>
+			
+			<table cellspacing="0" cellpadding="1" id="studentList">
+				<tr class="table_header">
+					<th class="student_th">教师姓名</th>
+					<th>联系电话</th>
+					<th>性别</th>
+					<th>最后跟进人/时间</th>
+					<th>带班</th>
+					<th>待排班</th>
+					<th>操作</th>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>女</td>
+					<td>张三/2017-01-06</td>
+					<td id="daiban">2</td>
+					<td  id="daipaiban">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+			</table>
+			<div id="page">
+				<button id="indexPage">上一页</button>
+				<p class="currPage">1</p>
+				<p class="notCurrPage">2</p>
+				<p class="notCurrPage">3</p>
+				<p class="pageNum">...</p>
+				<p class="notCurrPage">100</p>
+				<button id="nextPage">下一页</button>
+				<p id="goal">到第</p>
+				<input type="text" id="pageIpt"/>
+				<p id="goal">页</p>
+				<button id="nextPage">确定</button>
+				<p id="gong">共&nbsp;</p>
+				<p id="gongPage">103&nbsp;</p>
+				<p id="gongPage">页&nbsp;，</p>
+				<p id="gongPage">1156</p>
+				<p id="gongPage">&nbsp;&nbsp;条信息&nbsp;</p>
+			</div>
+		</div>
+	</body>
+</html>

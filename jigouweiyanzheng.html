@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>机构未验证</title>
+		<link rel="stylesheet" href="css/jigouweiyanzheng.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/jiaowu_common.css" />
+	</head>
+	<body>
+		<!--头部导航栏-->
+		<div class="header">
+			<img src="img/logo_blue.svg" class="logo" />
+			<p style="display: inline" class="jianchen">松果教育&nbsp;&nbsp;</p>
+			<p style="display: inline" class="quanming">北京松果互联信息科技有限公司</p>
+			<img src="img/Cancel.png" class="cancel"  />
+			<img src="img/helpicon.png" class="helpIcon"  />
+			<img src="img/message.png"  class="messageIcon"/>
+			<p style="display: inline" class="suoyouzhe">所有者</p>
+			<p style="display: inline" class="userName">15810048447&nbsp;&nbsp;</p>
+		</div>
+		<!--左边第一个导航栏-->
+		<div class="banner1">
+			<ul>
+    			<a href="#"><li id="currChooseBanner1">初始化</li></a>
+    		</ul>
+		</div>
+		<!--main-->
+		<div id="titleExplain">
+			<p class="explain1">在使用之前，需要进行机构初始化设置:</p>
+			<p class="explain2">请按照要求填写下列相关选项，*为必填项。</p>
+		</div>
+		<!--机构未验证的表单-->
+		<div id="jigouweiyanzhengDiv">
+			<form action="#" method="">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>机构全称</p>
+				&nbsp;<input type="text" id="jigouquanchenIpt" name=""  placeholder="例：北京松果互联信息科技有限公司" /><br/><br/>
+				<p>统一信用代码</p>
+				&nbsp;<input type="text" id="jigouquanchenIpt" name=""  maxlength="18" placeholder="18位统一信用代码" /><br/><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>机构简称</p>
+				&nbsp;<input type="text" id="jigouquanchenIpt" name="" placeholder="例：松果教育" /><br/><br/>
+				&nbsp;&nbsp;&nbsp; <p>管理员姓名</p>
+				&nbsp;<input type="text" id="jigouquanchenIpt" name="" placeholder="请填写当前登录手机的机主姓名" /><br/><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>证明公函</p>
+				&nbsp;<input type="text" id="zhengminggonghan" name="" placeholder="请上传加盖公章的证明公函" /><button class="uploadBtn">上传</button>
+				<br/><a>公函模板下载</a>
+				<br/><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <p>企业规模</p>
+				&nbsp;<select id="qiyeguimoSlt">
+								<option>500-100人</option>
+							</select><br/><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <p>教育方向</p>
+				&nbsp;<select id="qiyeguimoSlt">
+								<option>基础课程</option>
+							</select><br/><br/>
+				<input type="submit" id="tijiaoBtn"  value="提交"/>		
+			</form>
+		</div>
+	</body>
+</html>

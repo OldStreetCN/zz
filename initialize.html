@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<!--by luyuqing-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<link href="css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="css/common.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/initialize.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.validate.js" ></script>
+		<script type="text/javascript" src="js/messages_zh.js" ></script>
+		<title>机构未验证</title>
+		<script type="text/javascript">
+			$(function(){
+				$(".fom").validate({
+					rules:{
+						/*验证机构名*/
+						organization_name:{
+							required:true,
+							maxlength:20
+						},
+						/*验证统一信用代码*/
+						creditcode:{
+							required:true,
+							rangelength:[17,18]
+						},
+						/*机构简称*/
+						organization_abbreviation:{
+							required:true,
+						},
+						/*管理员姓名*/
+						admininame:{
+							required:true,
+							maxlength:10
+						},
+						/*证明公函*/
+						missive:{
+							required:true,
+						},
+						/*企业规模*/
+						scale:{
+							required:true,
+						},
+						/*教育方向*/
+						education:{
+							required:true,
+						}
+						
+						
+					},
+					messages:{
+						organization_name:{
+							maxlength:"公司名不超过20个字符"
+						},
+						creditcode:{
+							rangelength:"请输入18位信用代码"
+						},
+						admininame:{
+							maxlength:"姓名不超过十个字符"
+						},
+						scale:{
+							required:"请选择企业规模"
+						},
+						education:{
+							required:"请选择教育规模"
+						}
+					}
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="banner1 col-lg-4 col-md-4 col-sm-4">
+					<div class="logo">
+						<img src="img/logo_blue.svg"/>
+					</div>
+					<p class="admin col-md-offset-9"><a href="#">15810048447</a> | 所有者</p>
+					<p class="message"><a href="#">消息</a></p>
+					<p class="message"><a href="#">帮助</a></p>
+					<p class="message"><a href="#">退出</a></p>
+				</div>
+			</div>
+			<div class="banner2">
+				<div class="initialize">初始化</div>
+			</div>
+				<div class="initialize_explain">
+					<div class="explain1 font">在使用之前，需要进行机构初始化设置：</div>
+					<div class="explain2 font">请按照要求填写下列相关选项，* 为必填项。</div>
+				</div>
+				<form class="fom" action="#" method="post">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机构全称     <input class="ipt" type="text" name="organization_name" placeholder="   例：北京松果互联公司"  /><br/><br/>
+					统一信用代码     <input class="ipt"  type="text" name="creditcode" placeholder="   十八位统一信用代码"  /><br/><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机构简称     <input class="ipt"  type="text" name="organization_abbreviation" placeholder="   例：松果教育"  /><br/><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;管理员姓名     <input class="ipt"  type="text" name="admininame" placeholder="   请填写当前登录手机号的机主姓名"  /><br/><br/>
+					<p class="gonghan">证明公函</p>     <input class="ipt1"  type="text" name="missive" placeholder="   请上传加盖公章的证明公函"  />
+					<button type="button" name="" class="btn btn-primary btn-xs mybtn">上传</button><br/>
+					<a href="#">公函模板下载</a><br><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;企业规模    <select name="scale" class="slt">
+																			<option>  50-100  </option>
+																	   </select><br/><br/>
+				
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教育方向    <select name="education" class="slt">
+																			<option>  基础课程  </option>
+																	   </select><br/><br/>
+					<input type="submit" value="  提  交    " class="btn btn-success mybtn2"/>
+				</form>
+				
+			
+		</div>
+	</body>
+</html>

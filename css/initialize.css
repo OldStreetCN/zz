@@ -1,0 +1,104 @@
+			body{
+				margin: 0;
+				font-size: 62.5%;	
+				width: 100%;
+				height: 100vh;
+			}
+			.banner1{
+				width: 100%;
+				height:7vh;
+				border: none;
+				border-bottom: 1px solid #F0F0F0;
+			}
+			.logo img{
+				width: 7%;
+				height: 3em;
+				float: left;
+				margin-top: 0.5em;
+				margin-left: -1%;
+			}
+			.admin{
+				margin-top: 0.8em;
+				float: left;
+			}
+			.message{
+				margin-top: 0.8em;
+				float: left;
+				margin-left: 1em;
+			}
+			/*导航栏二*/
+			.banner2{
+				width: 8%;
+				height: 93vh;
+				margin-left: -1.2%;
+				background-color: #1E8AE8;
+				float: left;
+			}
+			/*初始化*/
+			.initialize{
+				color: white;
+				font-family: "微软雅黑";
+				background-color: #7DB5E8;
+				font-size:15px;
+				height: 7vh;
+				text-align: center;
+				padding-top: 12%;
+			}
+			/*初始化说明*/
+			.initialize_explain{
+				width: 30%;
+				height: 7vh;
+				margin-left:10%;
+				margin-top: 2%;
+			}
+			.explain1{
+				color: #666666;
+				font-size: 14px;
+			}
+			.explain2{
+				color: red;
+			}
+			/*表单*/
+			.fom{
+				width:30%;
+				height: 55vh;
+				color: #666666;
+				margin-left: 10%;
+				margin-top: 1%;
+				border: 1px solid red;
+			}
+			.ipt{
+				width:40%;
+				border: 1px solid #CDCDCD;
+				border-radius: 0.3em;
+			}
+			.ipt1{
+				width:30%;
+				border: 1px solid #CDCDCD;
+				border-radius: 0.3em;
+				float: left;
+			}
+			/*公函*/
+			.gonghan{
+				float: left;
+				margin-left: 6%;
+				margin-right: 1%;
+			}
+			.mybtn{
+				margin-left: 1%;
+				width: 8%;
+				border-radius: 0.3em;
+				background-color: #1E8AE8;
+			}
+			/*下拉列表样式*/
+			.slt{
+				width: 28%;
+				border-radius: 0.5em;
+			}
+			.mybtn2{
+				width: 25%;
+				margin-left: 10%;
+				background-color: #1E8AE8;
+				border:1px solid #1E8AE8;
+				border-radius: 0.3em;
+			}

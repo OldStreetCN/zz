@@ -1,0 +1,152 @@
+			/*公共样式*/
+			body{
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				overflow-x: hidden;
+			}
+			/*头部导航栏*/
+			.header{
+				height: 80px;
+				width: 100%;
+				background-color: #fcfcfc;
+				box-shadow: 1px 1px 1px #CDCDCD;
+				position: fixed;
+				font-family: "微软雅黑";
+				z-index: 999;
+			}
+			.logo{
+				width: 76px;
+				height: 38px;
+				margin-top:19px;
+				margin-left: 19px;
+				float: left;
+			}
+			.jianchen{
+				font-size: 14px;
+				line-height: 74px;
+				margin-left: 20px;
+				float: left;
+				color: #666666;
+			}
+			.jianchen:after{
+				content: "|";
+			}
+			.quanming{
+				margin-left: 7px;
+				font-size: 14px;
+				line-height: 74px;
+				float: left;
+				color: #666666;
+			}
+			.suoyouzhe{
+				font-size: 14px;
+				line-height: 74px;
+			}
+			.cancel{
+				width: 20px;
+				height: 20px;
+				float: right;
+				margin-top: 28px;
+				margin-right: 30px;
+			}
+			.helpIcon{
+				width: 20px;
+				height: 20px;
+				float: right;
+				margin-top: 28px;
+				margin-right: 19px;
+			}
+			.messageIcon{
+				width: 20px;
+				height: 20px;
+				float: right;
+				margin-top: 28px;
+				margin-right: 19px;
+			}
+			.userName{
+				font-size: 14px;
+				line-height: 74px;
+				margin-left: 20px;
+				float: right;
+				color: #666666;
+			}
+			.userName:after{
+				content: "|";
+			}
+			.suoyouzhe{
+				font-size: 14px;
+				line-height: 74px;
+				margin-left: 10px;
+				float: right;
+				margin-right: 120px;
+				color: #666666;
+			}
+			/*教务左边第一个导航栏*/
+			.banner1{
+				width: 120px;
+				height: 100%;
+				font-family: "微软雅黑";
+				background-color: #1E8AE8;
+				float: left;
+				position: fixed;
+				left:0;
+				top:80px;
+				z-index: 999;
+			}
+			.banner1 a{
+				text-decoration: none;
+			}
+			.banner1 li{
+				width: 120px;
+				height: 60px;
+				margin-left: -40px;
+				color: white;
+				font-size: 16px;
+				line-height: 47px;
+				list-style: none;
+				text-align: center;
+			}					
+			/*教务左边第二个导航栏*/
+			.banner2{
+				background-color: #FCFCFC;
+				width: 180px;
+				height: 100%;
+				float: left;
+				position:fixed;
+				border: 1px solid #EEEEEE;
+				text-align: center;
+				left: 120px;
+				top:80px;
+			}
+			.banner2 li{
+				width: 180px;
+				height: 60px;
+				margin-left: -41px;
+				color: #666666;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				line-height: 53px;
+				list-style: none;
+			}
+			.banner2 a{
+				text-decoration: none;
+			}
+			.title{
+				margin-top: 22px;
+				font-size: 18px;
+				font-family: "微软雅黑";
+				font-weight: bold;
+				color: #6f6f6f;
+				margin-left: -13px;
+				text-align: left;
+			}
+			.title_context{
+				font-size: 15px;
+				font-family: "微软雅黑";
+				color: #b2b2b2;
+				width: 140px;
+				margin-bottom: 20px;
+				margin-left: -15px;
+			}
+			

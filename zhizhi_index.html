@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>首页</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/jiaowu_common.css" />
+	 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>  
+	<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>  
+	<style type="text/css">
+		/*实现导航栏1的效果*/
+			body{overflow:auto;}
+			.banner1 a li:hover {
+				text-decoration: none;
+				background-color: #7DB5E8 !important;
+			}
+			.banner1 a li:visited{
+				text-decoration: none;
+				background-color: #7DB5E8 !important;
+			}
+			
+			.banner1 a li:active{
+				text-decoration: none;
+				background-color: #7DB5E8 !important;
+			}
+			#currChooseBanner1{background-color: #7DB5E8;}
+			/*首页内容区域*/
+			#g-article{ background-color: #FCFCFC; position: relative;left: 120px;top: 80px; width: 1300px;height: 1000px;}
+			#m-kuaisutongdaoDiv{float: left; position: relative;width: 740px;height: 90px;left: 15px;top: 13px;}
+			#m-kuaisutongdaoDiv p:nth-child(1){font-size: 14px;font-family: "微软雅黑";}
+			#u-kuaisutongdao{position: relative; top: -5px; width: 100%;height: 117px;background-color: #FFFFFF;box-shadow: 0px 0px 1px 1px #DDDDDD;}
+			#m-daibanshixiangDiv{float: left; font-family: "微软雅黑"; position: relative;left: 15px;top: 100px; width: 740px;height: 370px;}
+			#u-daibanshixiang-daibanshixiang{float: left;font-size: 14px;}
+			#u-daibanshixiang-crtbtn{float: right;border: none;background-color: #66cc99;border-radius: 15px;width: 70px;color: #fff;outline: none;}
+			#u-daibanshixiang-paixu{float: right;margin-right: 20px; appearance:none;-moz-appearance:none;-webkit-appearance:none;border: none;outline: none; background: url(img/selectIcon.png)  no-repeat 33px center;width: 50px;}
+			#u-daibanshixiang-jinjichengdu{float: right;margin-right: 20px;appearance:none;-moz-appearance:none;-webkit-appearance:none;border: none;outline: none;background: url(img/selectIcon.png)  no-repeat 60px center;width: 71px;}
+			#u-daibanshixiang-all{float: right;margin-right: 20px;appearance:none;-moz-appearance:none;-webkit-appearance:none;border: none;outline: none; background: url(img/selectIcon.png)  no-repeat 33px center;width: 50px;}
+			#u-daibanshixiang{position: relative; top:32px; width: 100%;height: 333px;background-color: #ffffff;box-shadow: 0px 0px 1px 1px #DDDDDD;}
+			#m-yunyingshujuDiv{float: left;width: 488px; height: 695px;position:relative;top:-69px;left: 48px;border: 1px solid red;font-family: "微软雅黑";}
+			#m-yunyingshujuDiv p:nth-child(1){margin: 0;}
+			#m-jigouyunyingDiv{position:relative; float:left;top: -186px; width: 740px;height: 120px;border: 1px solid red;left: 15px;}
+			#u-jigouyunying-jigouyunying{font-family: "微软雅黑";font-size: 14px;}
+			#u-stuzengjian{width: 100%;height: 350px;border: 1px solid green;}
+			#u-jigoushouzhi{width: 100%;height: 340px;border: 1px solid red;}
+	</style>
+	<script type="text/javascript">
+		// 路径配置  
+        require.config({  
+            paths: {  
+                echarts: 'http://echarts.baidu.com/build/dist'  
+            }  
+        });  
+          
+        // 使用  
+        require(  
+            [  
+                'echarts',  
+                'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载  
+            ],  
+            function (ec) {  
+                // 基于准备好的dom，初始化echarts图表  
+                var myChart = ec.init(document.getElementById('u-stuzengjian'));   
+                  
+                option = {
+					    title: {
+					        text: '学生增减情况'
+					    },
+					    tooltip : {
+					        trigger: 'axis',
+					        axisPointer: {
+					            type: 'cross',
+					            label: {
+					                backgroundColor: 'red'
+					            }
+					        }
+					    },
+					    legend: {
+					       data:['学生新增','学生失效','失效转化']
+					    },
+					    toolbox: {
+					        feature: {
+					            saveAsImage: {}
+					        }
+					    },
+					    grid: {
+					        left: '3%',
+					        right: '4%',
+					        bottom: '3%',
+					        containLabel: true
+					    },
+					    xAxis : [
+					        {
+					            type : 'category',
+					            boundaryGap : false,
+					            data : ['周一','周二','周三','周四','周五','周六','周日']
+					        }
+					    ],
+					    yAxis : [
+					        {
+					            type : 'value'
+					        }
+					    ],
+					    series : [
+					        {
+					            name:'学生新增',
+					            type:'line',
+					            areaStyle: {normal: {}},
+					            data:[1260, 1140, 600, 250, 200, 150, 10]
+					        },
+					        {
+					             name:'学生失效',
+					            type:'line',
+					            areaStyle: {normal: {}},
+					            data:[0, 200, 400, 760, 420, 50, 0]
+					        },
+					        {
+					             name:'失效转化',
+					            type:'line',
+					            areaStyle: {normal: {}},
+					            data:[0, 10, 20, 50, 250, 770, 540]
+					        },
+					    ]
+					}; 
+				 myChart.setOption(option);  
+          		
+          		/*机构收支*/
+          		var myChart = ec.init(document.getElementById('u-jigoushouzhi'));   
+				option = {
+					    title: {
+					        text: '机构收支曲线图',
+					    },
+					    tooltip : {
+					        trigger: 'axis',
+					        axisPointer: {
+					            type: 'cross',
+					            label: {
+					                backgroundColor: 'red'
+					            }
+					        }
+					    },
+					    legend: {
+					       data:['学生新增','学生失效','失效转化']
+					    },
+					    toolbox: {
+					        feature: {
+					            saveAsImage: {}
+					        }
+					    },
+					    grid: {
+					        left: '3%',
+					        right: '4%',
+					        bottom: '3%',
+					        containLabel: true
+					    },
+					    xAxis : [
+					        {
+					            type : 'category',
+					            boundaryGap : false,
+					            data : ['周一','周二','周三','周四','周五','周六','周日']
+					        }
+					    ],
+					    yAxis : [
+					        {
+					            type : 'value'
+					        }
+					    ],
+					    series : [
+					        {
+					            name:'学生新增',
+					            type:'line',
+					            areaStyle: {normal: {}},
+					            data:[1260, 1140, 600, 250, 200, 150, 10]
+					        },
+					        {
+					             name:'学生失效',
+					            type:'line',
+					            areaStyle: {normal: {}},
+					            data:[0, 200, 400, 760, 420, 50, 0]
+					        },
+					        {
+					             name:'失效转化',
+					            type:'line',
+					            areaStyle: {normal: {}},
+					            data:[0, 10, 20, 50, 250, 770, 540]
+					        },
+					    ]
+					};    
+					myChart.setOption(option);  
+            }  
+        ); 
+	</script>
+</head>
+<body>
+		<div class="header">
+			<img src="img/logo_blue.svg" class="logo" />
+			<p style="display: inline" class="jianchen">松果教育&nbsp;&nbsp;</p>
+			<p style="display: inline" class="quanming">北京松果互联信息科技有限公司</p>
+			<img src="img/Cancel.png" class="cancel"  />
+			<img src="img/helpicon.png" class="helpIcon"  />
+			<img src="img/message.png"  class="messageIcon"/>
+			<p style="display: inline" class="suoyouzhe">所有者</p>
+			<p style="display: inline" class="userName">15810048447&nbsp;&nbsp;</p>
+		</div>
+		<div class="banner1">
+			<ul>
+    			<a href="#"><li id="currChooseBanner1">首页</li></a>
+    			<a href="#"><li>教务</li></a>
+    			<a href="#"><li>办公</li></a>
+    			<a href="#"><li>运营</li></a>
+    			<a href="#"><li>数据</li></a>
+    			<a href="#"><li>扩展</li></a>
+    			<a href="#"><li>设置</li></a>
+    		</ul>
+		</div>
+		<article id="g-article">
+			<!--快速通道-->
+			<div id="m-kuaisutongdaoDiv">
+				<p>快速通道</p>
+				<div id="u-kuaisutongdao"></div>
+			</div>
+			<!--待办事项-->
+			<div id="m-daibanshixiangDiv">
+				<p id="u-daibanshixiang-daibanshixiang">待办事项</p>
+				<button id="u-daibanshixiang-crtbtn">创建</button>
+				<select id="u-daibanshixiang-paixu">
+					<option>排序</option>
+				</select>
+				<select id="u-daibanshixiang-jinjichengdu">
+					<option>紧急程度</option>
+				</select>
+				<select id="u-daibanshixiang-all">
+					<option>全部</option>
+				</select>
+				<div id="u-daibanshixiang">
+				</div>
+			</div>
+			<!--运营数据图-->
+			<div id="m-yunyingshujuDiv">
+				<p>数据运营图</p>
+				<div id="u-stuzengjian"></div>
+				<div id="u-jigoushouzhi"></div>
+				
+			</div>
+			<!--机构运营数据（自然月）-->
+			<div id="m-jigouyunyingDiv">
+				<p id="u-jigouyunying-jigouyunying">机构运营数据（自然月）</p>
+				<div id="u-jigouyunying">
+					
+				</div>
+			</div>			
+		</article>
+</body>
+</html>

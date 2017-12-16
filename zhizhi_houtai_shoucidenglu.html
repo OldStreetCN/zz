@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>首次登录</title>
+	    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+		<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<style type="text/css">
+			*{margin: 0;padding: 0;font-size: 100%;height: 100%;list-style: none;text-decoration: none;font-family: "微软雅黑";}
+			body{background-color: #FCFCFC;overflow: auto;}
+			#g-header{top: 0px; background-color:#FCFCFC ; width: 100%;height: 80px;box-shadow: 1px 1px 1px #CDCDCD;position: fixed;z-index: 1000!important;}
+			#u-hdlogo{height: 60px;width: 6%;margin-top: 10px;margin-left: 1.2%;float: left;}
+			#u-hdweijiaru{font-size: 14px;font-family: "微软雅黑";float: left;line-height: 80px;color: #666;margin-left: 4%;}
+			#u-hdcancle{float: right;margin-right: 4%;margin-top:30px; height: 20px;width: 20px;}
+			#u-hdhelp{float: right;margin-right: 2%;margin-top:30px; height: 20px;width: 20px;}
+			#u-hdmess{float: right;margin-right: 2%;margin-top:30px; height: 20px;width: 20px;}
+			#u-hduser{float: right;margin-right: 7%;line-height: 80px;font-size: 14px;font-family: "微软雅黑";color: #666;}
+			#u-hduser:after{content: " | 无权限";}
+			#g-banner{height: 100%;width:8.3%;position: fixed;top:80px;background-color: #1E8AE8;}
+			#g-banner ul li{color: #fff;height: 50px; line-height: 50px;text-align: center;font-family: "微软雅黑";font-size: 14px;}
+			#g-mask{z-index: 1000;height: 100%;width: 100%;background:  rgba(0,0,0,.5);position: fixed;display:none;}
+			#g-main{ z-index: 994!important; top: 80px; height: 100%;width:91.6%;position: relative;left: 8.3%;}
+			#u-maintitle{display: inline-block; color: #333;font-size: 18px;height:20px;width: 100px;margin-left: 3%;margin-top: 30px;}
+			#u-mainchooserole{margin-left: 8%;font-size: 14px;color:  #DA6B6B;}
+			#u-mainchooserole:before{content: "*  ";color:  #DA6B6B;}
+			#u-mainrole{margin-left: 9%;margin-top:40px; height:20px;width:100px; color: #333;font-size: 18px;}
+			#u-mainrole:before{content: "●  ";color:#1E8AE8;font-size: 14px;}
+			#u-fomjigou{cursor: pointer; width:240px;height: 80px;background-color: #37BDDF;border-radius: 5px;margin-left: 18.5%;margin-top: -42px;}
+			#u-fomjiaoshi{margin-left:2%;margin-top: -80px; cursor: pointer; width:240px;height: 80px;border-radius: 5px;background-color: #22AC38;}
+			#u-fomtitle{height: 20px;width: 100px; font-size: 18px;color: #666;margin-left: 9%;margin-top: 40px;}
+			#u-fomtitle:before{content: "●  ";color:#1E8AE8;font-size: 14px;}
+			/*机构拥有者*/
+			#u-fommessdiv{ margin-top: -20px; height: 500px;width: 850px;margin-left: 16.6%;}
+			#u-fomjigouquancheng{margin-left: 27px; font-size: 14px;color: #666;height: 20px;width: 60px;line-height: 40px;display: inline;}
+			#u-fomjigouquanchengipt{ font-size: 14px; color: #666; height: 40px;width: 444PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomtooltip2{height: 10px;width: 300px;font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";margin-left: 90px;}
+			#u-fomtooltip{margin-left: 10px; font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";}
+			#u-fomzuzhidaima{font-size: 14px;color: #666;height: 20px;width: 84px;display: inline-block;}
+			#u-fomzuzhidaimaipt{font-size: 14px; color: #666; margin-top: 30px; height: 40px;width: 444PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;display: inline;}
+			#u-fomjiancheng{font-size: 14px;color: #666;margin-left: 27px;}
+			#u-fomjianchengipt{font-size: 14px; color: #666; margin-top: 30px; height: 40px;width: 170PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomusername{font-size: 14px;color: #666;margin-left: 36px;}
+			#u-fomusernameipt{font-size: 14px; color: #666; margin-top: 30px; height: 40px;width: 170PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomidnumber{font-size: 14px;color: #666;margin-left: 27px;}
+			#u-fomidnumbeript{font-size: 14px; color: #666; margin-top: 30px; height: 40px;width: 444PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;display: inline;}
+			#u-fomzhizhaoipt{margin-top: 30px; height: 40px;width: 350px;font-size: 14px;color: #666; border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomupbtn{height: 40px;width: 83px;margin-left: 5px;background-color: #fff;font-size: 14px;border: none;border-radius: 5px;border: 1px solid #999;outline: none;color: #999;}
+			#u-fomsubmit{ height: 50px;width: 260px;margin-left:150px;margin-top: 80px; background-color: #fff;font-size: 14px;border: none;border-radius: 5px;border: 1px solid #999;outline: none;color: #999;}
+			#u-fomtooltip3{margin-top: 20px; height: 10px;width: 300px;font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";margin-left: 145px;}
+			/*机构拥有者文件上传对话框*/
+			#u-fomjigouwenjianshangchuanDiv{z-index: 1000!important;display: none;width: 400px;height:350px;background-color: #fff;position: fixed;top: 50%;left: 0;right: 0;margin: -250px auto 0 auto;}
+			#u-fomjigouwenjianshangchuanDivfile{z-index: 10; opacity:0; height: 200px;width: 200px;position:absolute;left: 87px;top: 30px; outline: none;}
+			#u-fomjigouwenjianshangchuanDivbtn{position: absolute;left: 87px;top: 270px; height: 40px;width: 200px;background-color: #1E8AE8;border: none;border-radius: 5px;outline: none; color: #fff;font-size: 14px;font-family: "微软雅黑";}
+			#u-fomjigouwenjianshangchuanimgDiv{z-index: 9; position: absolute;line-height: 200px; top: 30px;left: 87px;border: 1px solid #999; text-align: center;font-family: "微软雅黑"; height: 200px;width: 200px; background-color: #FAFAFA;color: #666;}
+			#u-fomjigouwenjianshangchuanimgDivimg{position: absolute;}
+			#u-fomjigouwenjianshangchuanfilename{position: absolute;width: 250px; left: 87px;top: 235px;height: 20px; font-size: 14px;color: #666;font-family: "微软雅黑";}
+			/*教师或者用户文件上传对话框*/
+			#u-fomjiaoshiwenjianshangchuanDiv{z-index: 1000!important;display: none;width: 400px;height:350px;background-color: #fff;position: fixed;top: 50%;left: 0;right: 0;margin: -250px auto 0 auto;}
+			#u-fomjiaoshiwenjianshangchuanclose{height: 20px;width: 20px;position: absolute;left: 365px;top: 10px;}
+			#u-fomjiaoshiwenjianshangchuanDivfile{z-index: 10; opacity:0; height: 200px;width: 200px;position:absolute;left: 87px;top: 30px; outline: none;}
+			#u-fomjiaoshiwenjianshangchuanimgDiv{z-index: 9; position: absolute;line-height: 200px; top: 30px;left: 87px;border: 1px solid #999; text-align: center;font-family: "微软雅黑"; height: 200px;width: 200px; background-color: #FAFAFA;color: #666;}
+			#u-fomjiaoshiwenjianshangchuanimgDivimg{position: absolute;}
+			#u-fomjiaoshiwenjianshangchuanfilename{position: absolute;width: 250px; left: 87px;top: 235px;height: 20px; font-size: 14px;color: #666;font-family: "微软雅黑";}
+			#u-fomjiaoshiwenjianshangchuanDivbtn{position: absolute;left: 87px;top: 270px; height: 40px;width: 200px;background-color: #1E8AE8;border: none;border-radius: 5px;outline: none; color: #fff;font-size: 14px;font-family: "微软雅黑";}
+			
+			/*教师或员工*/
+			#u-fommessjiaoshidiv{ margin-top: -20px; height: 500px;width: 850px;margin-left: 16.6%;}
+			#u-fomsuoshujigouipt{ font-size: 14px; color: #666; height: 40px;width: 444PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomjiaoshitooltip2{height: 10px;width: 400px;font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";margin-left: 90px;}
+			#u-fomjiaoshiserchDiv{ width: 444px;border: 1px solid #999; height: 100px; display: none; background-color: #fff; position: absolute; left: 293px;top: 235px;border-radius: 5px;}
+			#u-fomjiaoshijiancheng{font-size: 14px;color: #666;margin-left: 27px;}
+			#u-fomjiaoshijianchengipt{font-size: 14px; color: #666; margin-top: 30px; height: 40px;width: 170PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomjiaoshiusername{font-size: 14px;color: #666;margin-left: 36px;}
+			#u-fomjiaoshiusernameipt{font-size: 14px; color: #666; margin-top: 30px; height: 40px;width: 170PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomjiaoshiidnumber{font-size: 14px;color: #666;margin-left: 27px;}
+			#u-fomjiaoshiidnumbeript{font-size: 14px; color: #666; margin-top: 30px; height: 40px;width: 444PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;display: inline;}
+			#u-fomjiaoshichizhaoidnumber{font-size: 14px;color: #666;height: 20px;width: 84px;display: inline-block;}
+			#u-fomjiaoshichizhaozhizhaoipt{margin-top: 30px; height: 40px;width: 350px;font-size: 14px;color: #666; border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomjiaoshiupbtn{height: 40px;width: 83px;margin-left: 5px;background-color: #fff;font-size: 14px;border: none;border-radius: 5px;border: 1px solid #37BDDF;outline: none;color: #37BDDF;}
+			#u-fomjiaoshitooltip2{height: 10px;width: 400px;font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";margin-left: 90px;}
+			#u-fomjiaoshisubmit{ height: 50px;width: 260px;margin-left:150px;margin-top: 80px; background-color: #fff;font-size: 14px;border: none;border-radius: 5px;border: 1px solid #37BDDF;outline: none;color: #37BDDF;}
+			#u-fomjiaoshitooltip3{margin-top: 20px; height: 10px;width: 300px;font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";margin-left: 145px;}
+			#u-fomwenjianshangchuanclose{height: 20px;width: 20px;position: absolute;left: 365px;top: 10px;}
+			#u-fomfindpwd{font-size: 12px;	color: #1E8AE8;font-family: "微软雅黑";}
+		</style>
+		<script type="text/javascript">
+			/*首次登录初始化*/
+			$(function(){
+				$("#u-fomjigouquanchengipt").focus(function(){
+					if(this.value=="     例：北京松果互联信息有限公司"){
+						this.value="";
+					}
+				});
+				$("#u-fomjigouquanchengipt").blur(function(){
+					if(this.value==""){
+						this.value="     例：北京松果互联信息有限公司";
+					}
+				});
+				
+				$("#u-fomzuzhidaimaipt").focus(function(){
+					if(this.value=="     如果没有请填写统一信用代码"){
+						this.value="";
+					}
+				});	
+				$("#u-fomzuzhidaimaipt").blur(function(){
+					if(this.value==""){
+						this.value="     如果没有请填写统一信用代码";
+					}
+				});	
+				
+				$("#u-fomjianchengipt").focus(function(){
+					if(this.value=="     例：松果教育"){
+						this.value="";
+					}
+				});	
+				$("#u-fomjianchengipt").blur(function(){
+					if(this.value==""){
+						this.value="     例：松果教育";
+					}
+				});
+				
+				$("#u-fomusernameipt").focus(function(){
+					if(this.value=="     例：张三"){
+						this.value="";
+					}
+				});	
+				$("#u-fomusernameipt").blur(function(){
+					if(this.value==""){
+						this.value="     例：张三";
+					}
+				});
+				$("#u-fomidnumbeript").focus(function(){
+					if(this.value=="     例：1101010198001010011"){
+						this.value="";
+					}
+				});
+				$("#u-fomidnumbeript").blur(function(){
+					if(this.value==""){
+						this.value="     例：1101010198001010011";
+					}
+				});
+				
+				/*当鼠标移动到提交按钮上就改变样式*/
+				$("#u-fomsubmit").mouseover(function(){
+					$("#u-fomsubmit").css("background-color","#37BDDF");
+					$("#u-fomsubmit").css("color","#fff");
+				});
+				/*鼠标离开时改变样式*/
+				$("#u-fomsubmit").mouseleave(function(){
+					$("#u-fomsubmit").css("background-color","#fff");
+					$("#u-fomsubmit").css("color","#37BDDF");
+				});
+			});
+			
+			/*正则表达式检测表单*/
+			$(function(){
+				/*组织机构代码不能为中文*/
+				$("#u-fomzuzhidaimaipt").bind("input propertychange change",function(){
+					/*组织机构代码不能为中文*/
+					$("#u-fomzuzhidaimaipt").keyup(function(){
+						this.value=this.value.replace(/^[\u4e00-\u9fa5]+$/,'');
+					});
+				});
+				/*机构简称不超过六个字*/
+				$("#u-fomjianchengipt").attr("maxlength",6);
+				/*身份证号码不能超过十八位数字*/
+				$("#u-fomidnumbeript").attr("maxlength",18);
+				$("#u-fomidnumbeript").bind("input propertychange change",function(){
+					$("#u-fomidnumbeript").keyup(function(){
+						this.value=this.value.replace(/[^\d]/g,'');
+					});
+				});
+			});
+				
+			/*文件上传*/
+			$(function(){
+				$("#u-fomupbtn").click(function(){
+					$("#g-mask").css("display","block");
+					$("#u-fomjigouwenjianshangchuanDiv").css("display","block");
+				});
+			});
+			
+			$(function(){
+				/*当选择一个身份的时候身份提示消失*/
+				$("#u-fomjigou").click(function(){
+					$("#u-mainchooserole").css("display","none");
+				});
+				$("#u-fomjiaoshi").click(function(){
+					$("#u-mainchooserole").css("display","none");
+				});
+				/*当选择我是机构拥有者的时候*/
+				$("#u-fomjigou").click(function(){
+					$("#u-fomjigouquanchengipt").attr("disabled",false);
+					$("#u-fomzuzhidaimaipt").attr("disabled",false);
+					$("#u-fomjianchengipt").attr("disabled",false);
+					$("#u-fomusernameipt").attr("disabled",false);
+					$("#u-fomidnumbeript").attr("disabled",false);
+					$("#u-fomupbtn").attr("disabled",false);
+					$("#u-fomzhizhaoipt").attr("disabled",false);
+					$("#u-fomsubmit").attr("disabled",false);
+					$("#u-fomupbtn").css("border","1px solid #37BDDF");
+					$("#u-fomupbtn").css("color","#37BDDF");
+					$("#u-fomsubmit").css("border","1px solid #37BDDF");
+					$("#u-fomsubmit").css("color","#37BDDF");
+				});
+			});
+			/*单击机构拥有者的时候教师或者学生消失，单击教师或者学生的时候机构拥有者消失*/
+			$(function(){
+				$("#u-fomjigou").click(function(){
+					$("#u-fommessdiv").css("display","block");
+					$("#u-fommessjiaoshidiv").css("display","none");
+				});
+				$("#u-fomjiaoshi").click(function(){
+					$("#u-fommessdiv").css("display","none");
+					$("#u-fommessjiaoshidiv").css("display","block");
+				});
+			});
+			
+			/*这里是设置当表单填写成功的时候显示蓝色的框框*/
+			$(function(){
+				
+			});
+			
+			/*选择机构拥有者时的操作*/
+			$(function(){
+				/*单击提交机构拥有者的提交按钮如果表单没有填写则框变为红色*/
+				$("#u-fomsubmit").click(function(){
+					if($("#u-fomjigouquanchengipt").val()==""||$("#u-fomjigouquanchengipt").val()=="     例：北京松果互联信息有限公司"
+					||$("#u-fomzuzhidaimaipt").val()==""||$("#u-fomzuzhidaimaipt").val()=="     如果没有请填写统一信用代码"
+					||$("#u-fomjianchengipt").val()==""||$("#u-fomjianchengipt").val()=="     例：松果教育"
+					||$("#u-fomusernameipt").val()==""||$("#u-fomusernameipt").val()=="     例：张三"
+					||$("#u-fomidnumbeript").val()==""||$("#u-fomidnumbeript").val()=="     例：1101010198001010011"
+					||$("#u-fomzhizhaoipt").val()==""){
+						if($("#u-fomjigouquanchengipt").val()==""||$("#u-fomjigouquanchengipt").val()=="     例：北京松果互联信息有限公司"){
+							$("#u-fomjigouquanchengipt").css("border","1px solid #DA6B6B");
+						}
+						if($("#u-fomzuzhidaimaipt").val()==""||$("#u-fomzuzhidaimaipt").val()=="     如果没有请填写统一信用代码"){
+							$("#u-fomzuzhidaimaipt").css("border","1px solid #DA6B6B");
+						}
+						if($("#u-fomjianchengipt").val()==""||$("#u-fomjianchengipt").val()=="     例：松果教育"){
+							$("#u-fomjianchengipt").css("border","1px solid #DA6B6B");
+						}
+						if($("#u-fomusernameipt").val()==""||$("#u-fomusernameipt").val()=="     例：张三"){
+							$("#u-fomusernameipt").css("border","1px solid #DA6B6B");
+						}
+						if($("#u-fomidnumbeript").val()==""||$("#u-fomidnumbeript").val()=="     例：1101010198001010011"){
+							$("#u-fomidnumbeript").css("border","1px solid #DA6B6B");
+						}
+						if($("#u-fomzhizhaoipt").val()==""){
+							$("#u-fomzhizhaoipt").css("border","1px solid #DA6B6B");
+						}
+						return false;
+					}
+				});
+				
+				/*当机构拥有者的表单内的不为空时边框改为默认的颜色*/
+				$("#u-fomjigouquanchengipt").blur(function(){
+					if($("#u-fomjigouquanchengipt").val()!=""&&$("#u-fomjigouquanchengipt").val()!="     例：北京松果互联信息有限公司"){
+						$("#u-fomjigouquanchengipt").css("border","1px solid #666");
+					}
+				});
+				$("#u-fomzuzhidaimaipt").blur(function(){
+					if($("#u-fomzuzhidaimaipt").val()!=""&&$("#u-fomzuzhidaimaipt").val()!="     如果没有请填写统一信用代码"){
+						$("#u-fomzuzhidaimaipt").css("border","1px solid #666");
+					}
+				});
+				$("#u-fomjianchengipt").blur(function(){
+					if($("#u-fomjianchengipt").val()!=""&&$("#u-fomjianchengipt").val()!="     例：松果教育"){
+						$("#u-fomjianchengipt").css("border","1px solid #666");
+					}
+				});
+				$("#u-fomusernameipt").blur(function(){
+					if($("#u-fomusernameipt").val()!=""&&$("#u-fomusernameipt").val()!="     例：张三"){
+						$("#u-fomusernameipt").css("border","1px solid #666");
+					}
+				});
+				$("#u-fomidnumbeript").blur(function(){
+					if($("#u-fomidnumbeript").val()!=""&&$("#u-fomidnumbeript").val()!="     例：1101010198001010011"){
+						$("#u-fomidnumbeript").css("border","1px solid #666");
+					}
+				});
+				$("#u-fomzhizhaoipt").blur(function(){
+					if($("#u-fomzhizhaoipt").val()!=""){
+						$("#u-fomzhizhaoipt").css("border","1px solid #666");
+					}
+				});
+			});
+			
+			
+			/*机构拥有者文件上传专区*/
+			$(function(){
+				var previewrWidth = 200; 
+	       	    var previewrHeight = 200;
+	       	    var jigouimg= $("#u-fomjigouwenjianshangchuanimgDivimg");
+	       	    $("#u-fomjigouwenjianshangchuanDivfile").change(function(){ 
+	            var reader = new FileReader(); 
+	            reader.onload = function(e) { 
+	            	/*prop函数用于设置当前jquery对象所匹配的值*/
+	            	jigouimg.prop('src', e.target.result); 
+	            } 
+	            /*将此图片内嵌到网页中*/
+	            reader.readAsDataURL(this.files[0]); 
+	 
+	 			/*load函数是等图片等加载完成后才会执行这个函数*/
+	            jigouimg.load(function() { 
+	                var size = autoSize(this.naturalWidth, this.naturalHeight); 
+	                $(this).css({ 
+	                    width: size.width, 
+	                    height: size.height, 
+	                    top: (previewrHeight - size.height) / 2, 
+	                    left: (previewrWidth - size.width) / 2 
+	                }).show(); 
+		            }); 
+		          $("#u-fomjigouwenjianshangchuanfilename").text($("#u-fomjigouwenjianshangchuanDivfile").val());  
+				  $("#u-fomzhizhaoipt").val($("#u-fomjigouwenjianshangchuanDivfile").val());		            
+		        });
+		        function autoSize(width, height) { 
+		            var scale = width / height; 
+		            if (scale >= previewrWidth / previewrHeight) { 
+		                height = previewrWidth / scale; 
+		                width = previewrWidth; 
+		            } else { 
+		                width = previewrHeight * scale; 
+		                height = previewrHeight; 
+		            } 
+		            return { 
+		                width: width, 
+		                height: height 
+		            } 
+		        }
+	        });
+	        /*单击文件上传文本框关闭按钮*/
+			$(function(){
+				$("#u-fomwenjianshangchuanclose").click(function(){
+					$("#g-mask").css("display","none");
+					$("#u-fomjigouwenjianshangchuanDiv").css("display","none");
+				});
+			});
+			
+			
+			
+			/*当选择身份为教师或者员工时*/
+			$(function(){
+				$("#u-fomsuoshujigouipt").focus(function(){
+					if($("#u-fomsuoshujigouipt").val()=="     例：北京松果互联信息有限公司  或  S012315"){
+						$("#u-fomsuoshujigouipt").val("");
+					}
+				});
+				$("#u-fomsuoshujigouipt").blur(function(){
+					if($("#u-fomsuoshujigouipt").val()==""){
+						$("#u-fomsuoshujigouipt").val("     例：北京松果互联信息有限公司  或  S012315");
+					}
+				});
+				$("#u-fomjiaoshijianchengipt").focus(function(){
+					if($("#u-fomjiaoshijianchengipt").val()=="     例：松果教育"){
+						$("#u-fomjiaoshijianchengipt").val("");
+					}
+				});
+				$("#u-fomjiaoshijianchengipt").blur(function(){
+					if($("#u-fomjiaoshijianchengipt").val()==""){
+						$("#u-fomjiaoshijianchengipt").val("     例：松果教育");
+					}
+				});
+				$("#u-fomjiaoshiusernameipt").focus(function(){
+					if($("#u-fomjiaoshiusernameipt").val()=="     例：张三"){
+						$("#u-fomjiaoshiusernameipt").val("");
+					}
+				});
+				$("#u-fomjiaoshiusernameipt").blur(function(){
+					if($("#u-fomjiaoshiusernameipt").val()==""){
+						$("#u-fomjiaoshiusernameipt").val("     例：张三");
+					}
+				});
+				$("#u-fomjiaoshiidnumbeript").focus(function(){
+					if($("#u-fomjiaoshiidnumbeript").val()=="     例：1101010198001010011"){
+						$("#u-fomjiaoshiidnumbeript").val("");
+					}
+				});
+				$("#u-fomjiaoshiidnumbeript").blur(function(){
+					if($("#u-fomjiaoshiidnumbeript").val()==""){
+						$("#u-fomjiaoshiidnumbeript").val("     例：1101010198001010011");
+					}
+				});
+			});
+			
+			/*单击提交教师或员工的提交按钮如果表单没有填写则框变为红色*/
+			$(function(){
+				$("#u-fomjiaoshisubmit").click(function(){
+						if($("#u-fomsuoshujigouipt").val()==""||$("#u-fomsuoshujigouipt").val()=="     例：北京松果互联信息有限公司  或  S012315"
+						||$("#u-fomjiaoshijianchengipt").val()==""||$("#u-fomjiaoshijianchengipt").val()=="     例：松果教育"
+						||$("#u-fomjiaoshiusernameipt").val()==""||$("#u-fomjiaoshiusernameipt").val()=="     例：张三"
+						||$("#u-fomjiaoshiidnumbeript").val()==""||$("#u-fomjiaoshiidnumbeript").val()=="     例：1101010198001010011"
+						||$("#u-fomjiaoshichizhaozhizhaoipt").val()==""){
+							if($("#u-fomsuoshujigouipt").val()==""||$("#u-fomsuoshujigouipt").val()=="     例：北京松果互联信息有限公司  或  S012315"){
+								$("#u-fomsuoshujigouipt").css("border","1px solid #DA6B6B");
+							}
+							if($("#u-fomjiaoshijianchengipt").val()==""||$("#u-fomjiaoshijianchengipt").val()=="     例：松果教育"){
+								$("#u-fomjiaoshijianchengipt").css("border","1px solid #DA6B6B");
+							}
+							if($("#u-fomjiaoshiusernameipt").val()==""||$("#u-fomjiaoshiusernameipt").val()=="     例：张三"){
+								$("#u-fomjiaoshiusernameipt").css("border","1px solid #DA6B6B");
+							}
+							if($("#u-fomjiaoshiidnumbeript").val()==""||$("#u-fomjiaoshiidnumbeript").val()=="     例：1101010198001010011"){
+								$("#u-fomjiaoshiidnumbeript").css("border","1px solid #DA6B6B");
+							}
+							if($("#u-fomjiaoshichizhaozhizhaoipt").val()==""){
+								$("#u-fomjiaoshichizhaozhizhaoipt").css("border","1px solid #DA6B6B");
+							}
+							return false;
+						}
+					});
+					/*当机构拥有者的表单内的不为空时边框改为默认的颜色*/
+					$("#u-fomsuoshujigouipt").blur(function(){
+						if($("#u-fomsuoshujigouipt").val()!=""&&$("#u-fomsuoshujigouipt").val()!="     例：北京松果互联信息有限公司  或  S012315"){
+							$("#u-fomsuoshujigouipt").css("border","1px solid #666");
+						}
+					});
+					$("#u-fomjiaoshijianchengipt").blur(function(){
+						if($("#u-fomjiaoshijianchengipt").val()!=""&&$("#u-fomjiaoshijianchengipt").val()!="     例：松果教育"){
+							$("#u-fomjiaoshijianchengipt").css("border","1px solid #666");
+						}
+					});
+					$("#u-fomjiaoshiusernameipt").blur(function(){
+						if($("#u-fomjiaoshiusernameipt").val()!=""&&$("#u-fomjiaoshiusernameipt").val()!="     例：张三"){
+							$("#u-fomjiaoshiusernameipt").css("border","1px solid #666");
+						}
+					});
+					$("#u-fomjiaoshiidnumbeript").blur(function(){
+						if($("#u-fomjiaoshiidnumbeript").val()!=""&&$("#u-fomjiaoshiidnumbeript").val()!="     例：1101010198001010011"){
+							$("#u-fomjiaoshiidnumbeript").css("border","1px solid #666");
+						}
+					});
+					$("#u-fomjiaoshichizhaozhizhaoipt").blur(function(){
+						if($("#u-fomjiaoshichizhaozhizhaoipt").val()!=""){
+							$("#u-fomjiaoshichizhaozhizhaoipt").css("border","1px solid #666");
+						}
+					});
+				});
+			
+			/*单击教师或用户的上传按钮出来文件上传框*/
+			$(function(){
+				$("#u-fomjiaoshiupbtn").click(function(){
+					$("#g-mask").css("display","block");
+					$("#u-fomjiaoshiwenjianshangchuanDiv").css("display","block");
+				});
+				/*单击关闭按钮*/
+				$("#u-fomjiaoshiwenjianshangchuanclose").click(function(){
+					$("#g-mask").css("display","none");
+					$("#u-fomjiaoshiwenjianshangchuanDiv").css("display","none");
+				});
+			});
+			
+			/*教师或员工文件上传专区*/
+			$(function(){
+				var previewrWidth = 200; 
+	       	    var previewrHeight = 200;
+	       	    var jigouimg= $("#u-fomjiaoshiwenjianshangchuanimgDivimg");
+	       	    $("#u-fomjiaoshiwenjianshangchuanDivfile").change(function(){ 
+	            var reader = new FileReader(); 
+	            reader.onload = function(e) { 
+	            	/*prop函数用于设置当前jquery对象所匹配的值*/
+	            	jigouimg.prop('src', e.target.result); 
+	            } 
+	            /*将此图片内嵌到网页中*/
+	            reader.readAsDataURL(this.files[0]); 
+	 
+	 			/*load函数是等图片等加载完成后才会执行这个函数*/
+	            jigouimg.load(function() { 
+	                var size = autoSize(this.naturalWidth, this.naturalHeight); 
+	                $(this).css({ 
+	                    width: size.width, 
+	                    height: size.height, 
+	                    top: (previewrHeight - size.height) / 2, 
+	                    left: (previewrWidth - size.width) / 2 
+	                }).show(); 
+		            }); 
+		          $("#u-fomjiaoshiwenjianshangchuanfilename").text($("#u-fomjiaoshiwenjianshangchuanDivfile").val());  
+				  $("#u-fomjiaoshichizhaozhizhaoipt").val($("#u-fomjiaoshiwenjianshangchuanDivfile").val());		            
+		        });
+		        function autoSize(width, height) { 
+		            var scale = width / height; 
+		            if (scale >= previewrWidth / previewrHeight) { 
+		                height = previewrWidth / scale; 
+		                width = previewrWidth; 
+		            } else { 
+		                width = previewrHeight * scale; 
+		                height = previewrHeight; 
+		            } 
+		            return { 
+		                width: width, 
+		                height: height 
+		            } 
+		        }
+	        });
+			
+			
+			/*正则表达式检测表单*/
+			$(function(){
+				/*机构简称不超过六个字*/
+				$("#u-fomjiaoshijianchengipt").attr("maxlength",6);
+				/*身份证号码不能超过十八位数字*/
+				$("#u-fomjiaoshiidnumbeript").attr("maxlength",18);
+				$("#u-fomjiaoshiidnumbeript").bind("input propertychange change",function(){
+					$("#u-fomjiaoshiidnumbeript").keyup(function(){
+						this.value=this.value.replace(/[^\d]/g,'');
+					});
+				});
+			});
+			
+			/*我是机构拥有者的时候发送请求*/
+			$(function(){
+				
+			});
+			
+			/*我是教师或者员工的时候发送请求*/
+			/*所属机构输入框：输入六个字以上，查找数据库中的相应数据，如果有则列出在下面*/
+			$(function(){
+				$("#u-fomsuoshujigouipt").bind("input propertychange change",function(){
+					if($("#u-fomsuoshujigouipt").val().length>=6){
+						var sousuoObj={
+							souzuovalue:$("#u-fomsuoshujigouipt").val()
+						}
+					}
+				});
+				ajaxHelper("post", loginPath, loginObj, successHandler, errorHandler);
+			});
+			/*身份证号输入框：当前输入的身份证号码是不是已经被注册过，如果被注册过则提示“该身份证已被尾号****手机注册”*/
+			$(function(){
+				$("#u-fomjiaoshiidnumbeript").bind("input propertychange change",function(){
+					if($("#u-fomjiaoshiidnumbeript").val().length==18){
+						var useridnmberObj={
+							idnumber:$("#u-fomjiaoshiidnumbeript").val()
+						}
+					}
+				});
+			});
+			
+		</script>
+	</head>
+	<body>
+		<header id="g-header">
+			<img id="u-hdlogo" src="img/logo_blue.svg"/>
+			<p id="u-hdweijiaru">当前未加入任何结构</p>
+			<img id="u-hdcancle" src="img/Cancel.png" />
+			<img id="u-hdhelp" src="img/helpicon.png"/>
+			<img id="u-hdmess" src="img/message.png"/>
+			<p id="u-hduser">18270613396</p>
+		</header>
+		<div id="g-banner">
+			<ul>
+				<a href="#"><li>初始化</li></a>
+			</ul>
+		</div>
+		<div id="g-mask"></div>
+		<div id="g-main">
+			<p id="u-maintitle">账户初始化</p><span id="u-mainchooserole">请选择一个身份</span>
+			<p id="u-mainrole">身份选择</p>
+			<form action="#" method="post">
+				<img src="img/jiaoshihuoyuangong.png" id="u-fomjigou"/>
+				<img src="img/jigouyongyouzhe.png" id="u-fomjiaoshi"/>
+				<p id="u-fomtitle">信息填写</p>
+				<!--机构拥有者-->
+				<div id="u-fommessdiv">
+					<p id="u-fomjigouquancheng">机构全称</p>
+					<input type="text"  disabled name="" value="     例：北京松果互联信息有限公司" id="u-fomjigouquanchengipt" />
+					<span id="u-fomtooltip" >该机构已被手机尾号***的用户注册,<a href="#" id="u-fomfindpwd">找回密码</a></span><br />
+					<p id="u-fomtooltip2">请填写工商执照上面的公司名称</p>
+					<p id="u-fomzuzhidaima">组织机构代码</p>
+					<input type="text" name="" disabled value="     如果没有请填写统一信用代码" id="u-fomzuzhidaimaipt" /><br />
+					<p id="u-fomtooltip2">也可填写统一社会信用代码</p>
+					<span id="u-fomjiancheng">机构简称</span>
+					<input type="text" disabled name="" value="     例：松果教育" id="u-fomjianchengipt"  />
+					<span id="u-fomusername">用户姓名</span>
+					<input type="text" disabled name="" value="     例：张三"  id="u-fomusernameipt"  /><br />
+					<span id="u-fomidnumber">身份证号</span>
+					<input type="text" disabled name="" value="     例：1101010198001010011"  id="u-fomidnumbeript"  />
+					<span id="u-fomtooltip" >该身份证号已被手机尾号****的用户注册,<a href="#" id="u-fomfindpwd">找回密码</a></span><br/>
+					<p id="u-fomtooltip2">请填写当前操作人的身份证号码</p>
+					<span id="u-fomidnumber">营业执照</span>
+					<input type="text" disabled name="" id="u-fomzhizhaoipt"  />
+					<input type="button" disabled  value="上传" id="u-fomupbtn"/>
+					<!--<input type="file" id="u-fomwenjianshangchuan" />--><br />
+					<p id="u-fomtooltip2">请上传营业执照副本原件的扫描件</p>
+					<input type="submit" disabled value="提交并等待审核" disabled id="u-fomsubmit" />
+					<p id="u-fomtooltip3">工作日30分钟内完成审核，审核成功将以短信通知</p>
+				</div>
+				
+				<!--教师或者员工-->
+				<div id="u-fommessjiaoshidiv" hidden>
+					<p id="u-fomjigouquancheng">所属机构</p>
+					<input type="text" name=""  value="     例：北京松果互联信息有限公司  或  S012315" id="u-fomsuoshujigouipt" />
+					<p id="u-fomjiaoshitooltip2">请输入机构编码或机构全称，机构编码可询问机构管理人员</p>
+					<div id="u-fomjiaoshiserchDiv"></div>
+					<span id="u-fomjiaoshijiancheng">机构简称</span>
+					<input type="text" name="" value="     例：松果教育" id="u-fomjiaoshijianchengipt"  />
+					<span id="u-fomjiaoshiusername">用户姓名</span>
+					<input type="text" name="" value="     例：张三"  id="u-fomjiaoshiusernameipt"  /><br />
+					<span id="u-fomjiaoshiidnumber">身份证号</span>
+					<input type="text"  name="" value="     例：1101010198001010011"  id="u-fomjiaoshiidnumbeript"  />
+					<span id="u-fomtooltip">该身份证号已被手机尾号1017的用户注册  <a href="#" id="u-fomfindpwd">找回密码</a></span><br/>
+					<p id="u-fomtooltip2">请填写当前操作人的身份证号码</p>
+					<span id="u-fomjiaoshichizhaoidnumber">身份证持照</span>
+					<input type="text"  name="" id="u-fomjiaoshichizhaozhizhaoipt"  />
+					<input type="button" value="上传" id="u-fomjiaoshiupbtn"/><br />
+					<p id="u-fomjiaoshitooltip2">请保持身份证号清晰</p>
+					<input type="submit" value="提交并等待审核" id="u-fomjiaoshisubmit" />
+					<p id="u-fomjiaoshitooltip3">工作日30分钟内完成审核，审核成功将以短信通知</p>
+				</div>
+			</form>
+		</div>
+		<!--机构拥有者文件上传文本框-->
+		<div id="u-fomjigouwenjianshangchuanDiv">
+			<img src="img/button_close.png" id="u-fomwenjianshangchuanclose" />
+			<input type="file" id="u-fomjigouwenjianshangchuanDivfile"/>
+			<div id="u-fomjigouwenjianshangchuanimgDiv">
+				<img id="u-fomjigouwenjianshangchuanimgDivimg"/> 
+				+选择文件
+			</div>
+			<span id="u-fomjigouwenjianshangchuanfilename"></span>
+			<input type="button" value="上传"  id="u-fomjigouwenjianshangchuanDivbtn"/>
+		</div>
+		<!--教师或用户文件上传文本框-->
+		<div id="u-fomjiaoshiwenjianshangchuanDiv">
+			<img src="img/button_close.png" id="u-fomjiaoshiwenjianshangchuanclose" />
+			<input type="file" id="u-fomjiaoshiwenjianshangchuanDivfile"/>
+			<div id="u-fomjiaoshiwenjianshangchuanimgDiv">
+				<img id="u-fomjiaoshiwenjianshangchuanimgDivimg"/> 
+				+选择文件
+			</div>
+			<span id="u-fomjiaoshiwenjianshangchuanfilename"></span>
+			<input type="button" value="上传"  id="u-fomjiaoshiwenjianshangchuanDivbtn"/>
+		</div>
+	</body>
+</html>

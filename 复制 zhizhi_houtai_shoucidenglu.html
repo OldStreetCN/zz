@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>首次登录</title>
+	    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+		<style type="text/css">
+			*{margin: 0;padding: 0;font-size: 100%;height: 100%;list-style: none;text-decoration: none;font-family: "微软雅黑";}
+			body{background-color: #FCFCFC;overflow: auto;}
+			#g-header{top: 0px; background-color:#FCFCFC ; width: 100%;height: 80px;box-shadow: 1px 1px 1px #CDCDCD;position: fixed;z-index: 1000!important;}
+			#u-hdlogo{height: 60px;width: 6%;margin-top: 10px;margin-left: 1.2%;float: left;}
+			#u-hdweijiaru{font-size: 14px;font-family: "微软雅黑";float: left;line-height: 80px;color: #666;margin-left: 4%;}
+			#u-hdcancle{float: right;margin-right: 4%;margin-top:30px; height: 20px;width: 20px;}
+			#u-hdhelp{float: right;margin-right: 2%;margin-top:30px; height: 20px;width: 20px;}
+			#u-hdmess{float: right;margin-right: 2%;margin-top:30px; height: 20px;width: 20px;}
+			#u-hduser{float: right;margin-right: 7%;line-height: 80px;font-size: 14px;font-family: "微软雅黑";color: #666;}
+			#u-hduser:after{content: " | 无权限";}
+			#g-banner{height: 100%;width:8.3%;position: fixed;top:80px;background-color: #1E8AE8;}
+			#g-banner ul li{color: #fff;height: 50px; line-height: 50px;text-align: center;font-family: "微软雅黑";font-size: 14px;}
+			#g-main{ z-index: 994!important; top: 80px; height: 100%;width:91.6%;position: relative;left: 8.3%;}
+			#u-maintitle{color: #333;font-size: 18px;height:20px;width: 100px;margin-left: 3%;margin-top: 30px;}
+			#u-mainrole{margin-left: 9%;margin-top:40px; height:20px;width:100px; color: #333;font-size: 18px;}
+			#u-mainrole:before{content: "●  ";color:#1E8AE8;font-size: 14px;}
+			#u-fomjigou{cursor: pointer; width:240px;height: 80px;background-color: #37BDDF;border-radius: 5px;margin-left: 18.5%;margin-top: -42px;}
+			#u-fomjiaoshi{margin-left:2%;margin-top: -80px; cursor: pointer; width:240px;height: 80px;border-radius: 5px;background-color: #22AC38;}
+			#u-fomtitle{height: 20px;width: 100px; font-size: 18px;color: #666;margin-left: 9%;margin-top: 40px;}
+			#u-fomtitle:before{content: "●  ";color:#1E8AE8;font-size: 14px;}
+			#u-fommessdiv{ margin-top: -20px; height: 500px;width: 800px;margin-left: 16.6%;}
+			#u-fomjigouquancheng{margin-left: 27px; font-size: 14px;color: #666;height: 20px;width: 60px;line-height: 40px;display: inline;}
+			#u-fomjigouquanchengipt{ font-size: 14px; color: #666; height: 40px;width: 444PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomtooltip2{height: 10px;width: 300px;font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";margin-left: 90px;}
+			#u-fomtooltip{margin-left: 10px; font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";}
+			#u-fomzuzhidaima{font-size: 14px;color: #666;height: 20px;width: 84px;display: inline-block;}
+			#u-fomzuzhidaimaipt{font-size: 14px; color: #666; margin-top: 30px; height: 40px;width: 444PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;display: inline;}
+			#u-fomjiancheng{font-size: 14px;color: #666;margin-left: 27px;}
+			#u-fomjianchengipt{font-size: 14px; color: #666; margin-top: 30px; height: 40px;width: 170PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomusername{font-size: 14px;color: #666;margin-left: 36px;}
+			#u-fomusernameipt{font-size: 14px; color: #666; margin-top: 30px; height: 40px;width: 170PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomidnumber{font-size: 14px;color: #666;margin-left: 27px;}
+			#u-fomidnumbeript{font-size: 14px; color: #666; margin-top: 30px; height: 40px;width: 444PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;display: inline;}
+			#u-fomzhizhaoipt{margin-top: 30px; height: 40px;width: 350PX;border: none;border: 1px solid #999;border-radius: 5px;outline: none;}
+			#u-fomupbtn{height: 40px;width: 83px;margin-left: 5px;background-color: #fff;font-size: 14px;border: none;border-radius: 5px;border: 1px solid #37BDDF;outline: none;color: #37BDDF;}
+			#u-fomsubmit{ height: 50px;width: 260px;margin-left:150px;margin-top: 80px; background-color: #fff;font-size: 14px;border: none;border-radius: 5px;border: 1px solid #37BDDF;outline: none;color: #37BDDF;}
+			#u-fomtooltip3{margin-top: 20px; height: 10px;width: 300px;font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";margin-left: 145px;}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				$("#u-fomjigouquanchengipt").focus(function(){
+					if(this.value=="     例：北京松果互联信息有限公司"){
+						this.value="";
+					}
+				});
+				$("#u-fomjigouquanchengipt").blur(function(){
+					if(this.value==""){
+						this.value="     例：北京松果互联信息有限公司";
+					}
+				});
+				
+				$("#u-fomzuzhidaimaipt").focus(function(){
+					if(this.value=="     如果没有请填写统一信用代码"){
+						this.value="";
+					}
+				});	
+				$("#u-fomzuzhidaimaipt").blur(function(){
+					if(this.value==""){
+						this.value="     如果没有请填写统一信用代码";
+					}
+				});	
+				
+				$("#u-fomjianchengipt").focus(function(){
+					if(this.value=="     例：松果教育"){
+						this.value="";
+					}
+				});	
+				$("#u-fomjianchengipt").blur(function(){
+					if(this.value==""){
+						this.value="     例：松果教育";
+					}
+				});
+				
+				$("#u-fomusernameipt").focus(function(){
+					if(this.value=="     例：张三"){
+						this.value="";
+					}
+				});	
+				$("#u-fomusernameipt").blur(function(){
+					if(this.value==""){
+						this.value="     例：张三";
+					}
+				});
+				$("#u-fomidnumbeript").focus(function(){
+					if(this.value=="     例：1101010198001010011"){
+						this.value="";
+					}
+				});
+				$("#u-fomidnumbeript").blur(function(){
+					if(this.value==""){
+						this.value="     例：1101010198001010011";
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<header id="g-header">
+			<img id="u-hdlogo" src="img/logo_blue.svg"/>
+			<p id="u-hdweijiaru">当前未加入任何结构</p>
+			<img id="u-hdcancle" src="img/Cancel.png" />
+			<img id="u-hdhelp" src="img/helpicon.png"/>
+			<img id="u-hdmess" src="img/message.png"/>
+			<p id="u-hduser">18270613396</p>
+		</header>
+		<div id="g-banner">
+			<ul>
+				<a href="#"><li>初始化</li></a>
+			</ul>
+		</div>
+		<div id="g-main">
+			<p id="u-maintitle">账户初始化</p>
+			<p id="u-mainrole">身份选择</p>
+			<form action="#" method="post">
+				<img src="img/jiaoshihuoyuangong.png" id="u-fomjigou"/>
+				<img src="img/jigouyongyouzhe.png" id="u-fomjiaoshi"/>
+				<p id="u-fomtitle">信息填写</p>
+				<div id="u-fommessdiv">
+					<p id="u-fomjigouquancheng">机构全称</p>
+					<input type="text" disabled name="" value="     例：北京松果互联信息有限公司" id="u-fomjigouquanchengipt" />
+					<span id="u-fomtooltip" hidden>该机构已被手机尾号1017的用户注册</span><br />
+					<p id="u-fomtooltip2">请填写工商执照上面的公司名称</p>
+					<p id="u-fomzuzhidaima">组织机构代码</p>
+					<input type="text" name="" disabled value="     如果没有请填写统一信用代码" id="u-fomzuzhidaimaipt" /><br />
+					<span id="u-fomjiancheng">机构简称</span>
+					<input type="text" disabled name="" value="     例：松果教育" id="u-fomjianchengipt"  />
+					<span id="u-fomusername">用户姓名</span>
+					<input type="text" disabled name="" value="     例：张三"  id="u-fomusernameipt"  /><br />
+					<span id="u-fomidnumber">身份证号</span>
+					<input type="text" disabled name="" value="     例：1101010198001010011"  id="u-fomidnumbeript"  />
+					<span id="u-fomtooltip" hidden>该身份证号已被手机尾号1017的用户注册</span><br/>
+					<p id="u-fomtooltip2">请填写当前操作人的身份证号码</p>
+					<span id="u-fomidnumber">营业执照</span>
+					<input type="text" disabled name="" id="u-fomzhizhaoipt"  />
+					<input type="button" disabled value="上传" id="u-fomupbtn"/><br />
+					<p id="u-fomtooltip2">请上传营业执照副本原件的扫描件</p>
+					<input type="submit" disabled value="提交并审核" disabled id="u-fomsubmit" />
+					<p id="u-fomtooltip3">工作日30分钟内完成审核，审核成功将以短信通知</p>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

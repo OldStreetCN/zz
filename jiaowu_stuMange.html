@@ -1,0 +1,597 @@
+﻿<!DOCTYPE html>
+<!--bylu-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>教务</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/jiaowu_stuMange.css" />
+		<link rel="stylesheet" href="css/jiaowu_common.css" />
+    	<script type="text/javascript" src="js/jquery.min.js" ></script>
+    	<script type="text/javascript" src="js/jiaowu_stuMange.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<img src="img/logo_blue.svg" class="logo" />
+			<p style="display: inline" class="jianchen">松果教育&nbsp;&nbsp;</p>
+			<p style="display: inline" class="quanming">北京松果互联信息科技有限公司</p>
+			<img src="img/Cancel.png" class="cancel"  />
+			<img src="img/helpicon.png" class="helpIcon"  />
+			<img src="img/message.png"  class="messageIcon"/>
+			<p style="display: inline" class="suoyouzhe">所有者</p>
+			<p style="display: inline" class="userName">15810048447&nbsp;&nbsp;</p>
+		</div>
+		<div id="mask"></div>
+		<div class="banner1">
+			<ul>
+    			<a href="#"><li>首页</li></a>
+    			<a href="#"><li id="currChooseBanner1">教务</li></a>
+    			<a href="#"><li>办公</li></a>
+    			<a href="#"><li>运营</li></a>
+    			<a href="#"><li>数据</li></a>
+    			<a href="#"><li>扩展</li></a>
+    			<a href="#"><li>设置</li></a>
+    		</ul>
+		</div>
+		<div class="banner2">
+			<ul>
+    			<p class="title">教务</p>
+    			<p class="title_context">根据需求选择您要管理的项。</p>
+    			<a id="currChooseBanner2" href="#" ><li id="currChooseBanner2">学生管理</li></a>
+    			<a href="jiaowu_teachMange.html"><li>教师管理</li></a>
+    			<a href="#"><li>班级管理</li></a>
+    			<a href="#"><li>课程管理</li></a>
+    			<a href="#"><li>日常课务</li></a>
+    		</ul>
+		</div>
+
+		<div class="main">
+			<p class="main_title">学生管理</p>
+			<!--学生姓名查找-->
+			<select name="" class="studentNameSlt">
+				<option value="">学生姓名</option>
+				<option value="">手机号</option>
+			</select>
+			<input type="text" class="inputserach"/>
+			<!--课程筛选-->
+			<select id="courseSlt">
+				<option disabled selected style='display:none;'>课程筛选</option>
+				<option>体育</option>
+				<option>三年级语文下</option>
+			</select>
+			<!--班级筛选-->
+			<select id="classesSlt">
+				<option disabled selected style='display:none;'>班级筛选</option>
+				<option>三年级一班</option>
+				<option>三年级二班</option>
+			</select>
+			<!--跟进时间-->
+			<select id="lastwriter">
+				<option disabled selected style='display:none;'>跟进时间</option>
+				<option>三年级一班</option>
+				<option>三年级二班</option>
+			</select>
+			<!--待续费-->
+			<select id="waitrenewal">
+				<option disabled selected style='display:none;'>待续费</option>
+				<option>三年级一班</option>
+				<option>三年级二班</option>
+			</select>
+			<!--调整次数-->
+			<select id="waitArrange">
+				<option disabled selected style='display:none;'>调班次数</option>
+				<option>三年级一班</option>
+				<option>三年级二班</option>
+			</select>
+			<!--重置按钮-->
+			<button class="reset" id="reset">重置</button>
+			<!--学生添加-->
+			<button class="addStudent">学生添加</button>
+			<!--学生添加模态框-->
+			<div id="myModal">
+				<div id="addStuHeader">
+						<p id="addStuHeaderTitle">学生添加</p>
+						<p id="addStuHeaderTitleExplain">*</p>
+						<img src="img/button_close.png" id="closeBtn"/>
+					</div>
+					<div id="addStuContentModel">
+						<form action="#" method="post">
+							<p id="addStuName">学生姓名</p>
+							<input type="text" name="" id="addStuNameIpt" />
+							<p id="addParName">家长姓名</p>
+							<input type="text" name="" id="addParNameIpt" />
+							<div id="jiaofeifangshiDiv">
+								<p id="jiaofeifangshi">缴费方式</p>
+								<input id="shuaka" type="radio" name="jiaofeifangshi" value="" checked />
+								<label for="shuaka"></label>
+								<p>刷卡</p>
+								<input id="weixin" type="radio" name="jiaofeifangshi" value=""  />
+								<label for="weixin"></label>
+								<p>微信</p>
+								<input id="zhifubao" type="radio" name="jiaofeifangshi" value=""  />
+								<label for="zhifubao"></label>
+								<p>支付宝</p>
+								<input id="xianjin" type="radio" name="jiaofeifangshi" value=""  />
+								<label for="xianjin"></label>
+								<p>现金</p>
+							</div>
+							<p id="tel">联系电话</p>
+							<input  type="text" id="tellpt"  name="" />
+							<p id="personId">身份证号</p>
+							<input  type="text" id="personIdIpt"  name="" />
+							<p id="baomingCourse">报名课程</p>
+							<input  type="text" id="baomingCourseIpt"  name="" placeholder="     输入关键字检索" />
+							<select name="" class="baomingCourseSlt">
+								<option value="">班级</option>
+								<option value="">三年级</option>
+							</select>
+							<div id="stuAddCurrChooseCourse">
+								
+							</div>
+							<button class="baomingCourseBtn" >增加</button>
+							<div id="kuaisu1" onclick="addDiv()">语文作文1班</div>
+							<div id="kuaisu2" onclick="addDiv()">智能机器人编程1班</div>
+							<div id="kuaisu3" onclick="addDiv()">智能机器人编程2班</div>
+							<div id="kuaisu4" onclick="addDiv()">语文作文2班</div>
+							<div id="currCourseDiv">
+									<label id="currChooseCourse">当前选择课程&nbsp;</label>
+									<label id="currChooseCourseCount"></label>
+									<label id="currChooseCourse">&nbsp;节，需要缴费&nbsp;</label>
+									<label id="currChooseCourseCount">4880</label>
+									<label id="currChooseCourse">&nbsp;元。</label><br />
+							</div>
+							<p id="pay">金额确认</p>
+							<input  type="text" id="payIpt"  readonly="readonly"  name="" />
+							<p id="genjinren">跟进人</p>
+							<input  type="text" id="genjinrenIpt"  readonly="readonly"  name="" />
+							<label id="wufaxiugai">无法修改</label>
+							<input type="submit" value="完成学生修改"  id="finshStuReviseBtn"/>
+						</form>
+					</div>
+			</div>
+			
+			<!--单击表格详细信息弹出模态框-->
+			<div id="tableDetailMessModel">
+				<div id="tableDetailMessModelHeader">
+					<div id="tableDetailMessModelBanner">
+						<ul>
+							<a href="#"><li id="tableDetailMessBannerLi1" class="tableDetailMessBannerLi0">详细信息</li></a>
+							<a href="#"><li id="tableDetailMessBannerLi2">学生调班</li></a>
+							<a href="#"><li id="tableDetailMessBannerLi3">跟进信息</li></a>
+						</ul>
+					</div>
+					<img src="img/button_close.png" id="tableDetailMessModelCloseBtn"/>
+					<!--详细信息选项卡Div-->
+					<div id="tableDetailMessModelMain">
+						<p id="tableDetailMessModelMainStuName">学生姓名</p>
+						<input type="text" name="" readonly="readonly" id="tableDetailMessModelMainStuNameIpt" />
+						<p id="tableDetailMessModelMainParName">家长姓名</p>
+						<input type="text" name="" readonly="readonly" id="tableDetailMessModelMainParNameIpt" />
+						<p id="tableDetailMessModelMainCurrGrade">在读年级</p>
+						<select name="" class="tableDetailMessModelMainCurrGradeSlt">
+							<option value="">选择</option>
+							<option value="">三年级</option>
+						</select>
+						<p id="tableDetailMessModelMainStuState">学生状态</p>
+						<select name="" class="tableDetailMessModelMainStuStateSlt">
+							<option value="">选择</option>
+							<option value="">在读</option>
+						</select>
+						<p id="tableDetailMessModelMainTel">联系电话</p>
+						<input type="text" name="" readonly="readonly" id="tableDetailMessModelMainTelIpt"/>
+						<a id="tableDetailMessModelMainTelDisplay">显示号码</a>
+						<p id="tableDetailMessModelRemarkMess" >备注信息</p>
+						<input type="text" name="" readonly="readonly" id="tableDetailMessModelRemarkMessIpt" />
+						<p id="tableDetailMessModelChooseMess">报课信息</p>
+						<div id="tableDetailMessModelMainTabOutDiv">
+							<table id="tableDetailMessModelMainTab" cellspacing="0" cellpadding="1">
+								<tr>
+									<td id="tableDetailMessModelMainTabCourseName">课程名称</td>
+									<td id="tableDetailMessModelMainTabCourseCount">课时</td>
+									<td id="tableDetailMessModelMainTabStrEndTime">起止时间</td>
+									<td id="tableDetailMessModelMainTabClassTime">上课时间</td>
+								</tr>
+								<tr>
+									<td>语文作文超级课程1班</td>
+									<td>23/60</td>
+									<td>2017/11/08-2017/11/12</td>
+									<td id="tableDetailMessModelMainTabClassTimeTd"><label id="tableDetailMessModelMainTabClassTimeDay"> 三</label><lable>17:25</lable></td>
+								</tr>
+								<tr>
+									<td>语文作文超级课程1班</td>
+									<td>23/60</td>
+									<td>2017/11/08-2017/11/12</td>
+									<td id="tableDetailMessModelMainTabClassTimeTd"><label id="tableDetailMessModelMainTabClassTimeDay"> 三</label><lable>17:25</lable></td>
+								</tr>
+								<tr>
+									<td>语文作文超级课程1班</td>
+									<td>23/60</td>
+									<td>2017/11/08-2017/11/12</td>
+									<td id="tableDetailMessModelMainTabClassTimeTd"><label id="tableDetailMessModelMainTabClassTimeDay"> 三</label><lable>17:25</lable></td>
+								</tr>
+								<tr>
+									<td>语文作文超级课程1班</td>
+									<td>23/60</td>
+									<td>2017/11/08-2017/11/12</td>
+									<td id="tableDetailMessModelMainTabClassTimeTd"><label id="tableDetailMessModelMainTabClassTimeDay"> 三</label><lable>17:25</lable></td>
+								</tr>
+								<tr>
+									<td>语文作文超级课程1班</td>
+									<td>23/60</td>
+									<td>2017/11/08-2017/11/12</td>
+									<td id="tableDetailMessModelMainTabClassTimeTd"><label id="tableDetailMessModelMainTabClassTimeDay"> 三</label><lable>17:25</lable></td>
+								</tr>
+								<tr>
+									<td>语文作文超级课程1班</td>
+									<td>23/60</td>
+									<td>2017/11/08-2017/11/12</td>
+									<td id="tableDetailMessModelMainTabClassTimeTd"><label id="tableDetailMessModelMainTabClassTimeDay"> 三</label><lable>17:25</lable></td>
+								</tr>
+								<tr>
+									<td>语文作文超级课程1班</td>
+									<td>23/60</td>
+									<td>2017/11/08-2017/11/12</td>
+									<td id="tableDetailMessModelMainTabClassTimeTd"><label id="tableDetailMessModelMainTabClassTimeDay"> 三</label><lable>17:25</lable></td>
+								</tr>
+								<tr>
+									<td>语文作文超级课程1班</td>
+									<td>23/60</td>
+									<td>2017/11/08-2017/11/12</td>
+									<td id="tableDetailMessModelMainTabClassTimeTd"><label id="tableDetailMessModelMainTabClassTimeDay"> 三</label><lable>17:25</lable></td>
+								</tr>
+								<tr>
+									<td>语文作文超级课程1班</td>
+									<td>23/60</td>
+									<td>2017/11/08-2017/11/12</td>
+									<td id="tableDetailMessModelMainTabClassTimeTd"><label id="tableDetailMessModelMainTabClassTimeDay"> 三</label><lable>17:25</lable></td>
+								</tr>
+								<tr>
+									<td>语文作文超级课程1班</td>
+									<td>23/60</td>
+									<td>2017/11/08-2017/11/12</td>
+									<td id="tableDetailMessModelMainTabClassTimeTd"><label id="tableDetailMessModelMainTabClassTimeDay"> 三</label><lable>17:25</lable></td>
+								</tr>
+								<tr>
+									<td>语文作文超级课程1班</td>
+									<td>23/60</td>
+									<td>2017/11/08-2017/11/12</td>
+									<td id="tableDetailMessModelMainTabClassTimeTd"><label id="tableDetailMessModelMainTabClassTimeDay"> 三</label><lable>17:25</lable></td>
+								</tr>
+							</table>
+						</div>
+						<input type="button" value="保存退出"  id="finshStuReviseBtn"/>
+					</div>
+					<!--学生调班Div-->
+					<div id="tableStuChangeClassDiv">
+						<table id="tableStuChangeClassTab1" cellspacing="0" cellpadding="1">
+							<tr id="tableStuChangeClassTab1Tr">
+								<th id="tableStuChangeClassTab1TrName">姓名</th>
+								<th id="tableStuChangeClassTab1TrCourseCount">课程(课时)</th>
+								<th id="tableStuChangeClassTab1TrClasses">班级</th>
+								<th id="tableStuChangeClassTab1TrTeach">任课老师</th>
+							</tr>
+							<tr>
+								<td>高长浩</td>
+								<td><p id="tableStuChangeClassTab1Lab1">语文课程</p><p id="tableStuChangeClassTab1Lab2">20/60</p></td>
+								<td>1班</td>
+								<td>高长浩</td>
+							</tr>
+							<tr>
+								<td>高长浩</td>
+								<td><p id="tableStuChangeClassTab1Lab1">语文课程</p><p id="tableStuChangeClassTab1Lab2">20/60</p></td>
+								<td>1班</td>
+								<td>高长浩</td>
+							</tr>
+							<tr>
+								<td>高长浩</td>
+								<td><p id="tableStuChangeClassTab1Lab1">语文课程</p><p id="tableStuChangeClassTab1Lab2">20/60</p></td>
+								<td>1班</td>
+								<td>高长浩</td>
+							</tr>
+							<tr>
+								<td>高长浩</td>
+								<td><p id="tableStuChangeClassTab1Lab1">语文课程</p><p id="tableStuChangeClassTab1Lab2">20/60</p></td>
+								<td>1班</td>
+								<td>高长浩</td>
+							</tr>
+							<tr>
+								<td>高长浩</td>
+								<td><p id="tableStuChangeClassTab1Lab1">语文课程</p><p id="tableStuChangeClassTab1Lab2">20/60</p></td>
+								<td>1班</td>
+								<td>高长浩</td>
+							</tr>
+						</table>
+						<table id="tableStuChangeClassTab2" cellspacing="0" cellpadding="1">
+							<tr id="tableStuChangeClassTab1Tr">
+								<th id="tableStuChangeClassTab1TrName2">班级</th>
+								<th id="tableStuChangeClassTab1TrCourseCount2">任课老师</th>
+							</tr>
+							<tr>
+								<td>1班</td>
+								<td>长浩</td>
+							</tr>
+							<tr>
+								<td>1班</td>
+								<td>长浩</td>
+							</tr>
+							<tr>
+								<td>1班</td>
+								<td>长浩</td>
+							</tr>
+							<tr>
+								<td>1班</td>
+								<td>长浩</td>
+							</tr>
+							<tr>
+								<td>1班</td>
+								<td>长浩</td>
+							</tr>
+						</table>
+						<table id="tableStuChangeClassTab3" cellspacing="0" cellpadding="1">
+							<tr id="tableStuChangeClassTab1Tr">
+								<th id="tableStuChangeClassTab1TrName2">班级</th>
+								<th id="tableStuChangeClassTab1TrCourseCount2">任课老师</th>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+						<div id="tableStuChangeClassTab4OutDiv">
+							<table id="tableStuChangeClassTab4" cellspacing="0" cellpadding="1">
+								<tr id="tableStuChangeClassTab1Tr">
+									<th id="tableStuChangeClassTab1TrName4">班级</th>
+									<th id="tableStuChangeClassTab1TrCourseCount4">任课老师</th>
+								</tr>
+								<tr>
+									<td>语文课程  1班</td>
+									<td>语文课程  2班</td>
+								</tr>
+								<tr>
+									<td>语文课程  1班</td>
+									<td>语文课程  2班</td>
+								</tr>
+								<tr>
+									<td>语文课程  1班</td>
+									<td>语文课程  2班</td>
+								</tr>
+								<tr>
+									<td>语文课程  1班</td>
+									<td>语文课程  2班</td>
+								</tr>
+								<tr>
+									<td>语文课程  1班</td>
+									<td>语文课程  2班</td>
+								</tr>
+								<tr>
+									<td>语文课程  1班</td>
+									<td>语文课程  2班</td>
+								</tr>
+							</table>
+						</div>
+						<input type="button" value="保存退出"  id="finshStuReviseBtn"/>
+					</div>
+					<!--跟进信息-->
+					<div id="tableGenJinMessDiv">
+						<div id="tableGenJinMessGenJinMessDiv">
+							<ul>
+								<li>
+									<div id="shijianzhouIcon"></div>
+									<div id="shijianzhouTime">2017/11/07 14:48:22</div>
+									<div id="shijianzhouName">【高长浩】</div>	
+									<div id="shijianzhouContent">北京松果科技有限公司在hash发生口角发贺卡上v会计师发哈开发哈萨克发生纠纷和扩大解放</div>
+									<div id="shijianzhouClear"></div>
+								</li>
+								<li>
+									<div id="shijianzhouIcon"></div>
+									<div id="shijianzhouTime">2017/11/07 14:48:22</div>
+									<div id="shijianzhouName">【高长浩】</div>	
+									<div id="shijianzhouContent">北京松果</div>
+									<div id="shijianzhouClear"></div>
+								</li>
+								<li>
+									<div id="shijianzhouIcon"></div>
+									<div id="shijianzhouTime">2017/11/07 14:48:22</div>
+									<div id="shijianzhouName">【高长浩】</div>	
+									<div id="shijianzhouContent">北京松果科技有限公司在hash发生口角发贺卡上v会计师发哈开发哈萨克发生纠纷和扩大解放</div>
+									<div id="shijianzhouClear"></div>
+								</li>
+								<li>
+									<div id="shijianzhouIcon"></div>
+									<div id="shijianzhouTime">2017/11/07 14:48:22</div>
+									<div id="shijianzhouName">【高长浩】</div>	
+									<div id="shijianzhouContent">北京松果科技有限公司在hash发生口角发贺卡上v会计师发哈开发哈萨克发生纠纷和扩大解放</div>
+									<div id="shijianzhouClear"></div>
+								</li>
+							</ul>
+						</div>
+						<textarea id="tableGenJinMessBottomDiv"></textarea>
+						<input type="button" value="提交跟进"  id="finshStuReviseBtn"/>
+					</div>
+				</div>
+			</div>
+			
+			<table cellspacing="0" cellpadding="1" id="studentList">
+				<tr class="table_header">
+					<th class="student_th">学生姓名</th>
+					<th>联系电话</th>
+					<th>已报课程数量</th>
+					<th>最后跟进人/房间</th>
+					<th>待续费课程</th>
+					<th>调班次数</th>
+					<th>操作</th>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+				<tr>
+					<td>王大锤</td>
+					<td>18270613396</td>
+					<td>3</td>
+					<td>张三/2017-01-06</td>
+					<td id="studentListTd">2</td>
+					<td id="studentListTd">2</td>
+					<td><button class="tableDetailMessBtn">详细信息</button>&nbsp;<button class="btn2">调班</button></td>
+				</tr>
+			</table>
+			<div id="page">
+				<button id="indexPage">上一页</button>
+				<p class="currPage">1</p>
+				<p class="notCurrPage">2</p>
+				<p class="notCurrPage">3</p>
+				<p class="pageNum">...</p>
+				<p class="notCurrPage">100</p>
+				<button id="nextPage">下一页</button>
+				<p id="goal">到第</p>
+				<input type="text" id="pageIpt"/>
+				<p id="goal">页</p>
+				<button id="nextPage">确定</button>
+				<p id="gong">共&nbsp;</p>
+				<p id="gongPage">103&nbsp;</p>
+				<p id="gongPage">页&nbsp;，</p>
+				<p id="gongPage">1156</p>
+				<p id="gongPage">&nbsp;&nbsp;条信息&nbsp;</p>
+			</div>
+		</div>
+	</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
