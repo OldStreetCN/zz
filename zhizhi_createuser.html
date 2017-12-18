@@ -45,13 +45,14 @@
 			#u-logintitle{font-size: 20px; color: #666666;padding-top: 45px;}
 			#u-logintel{font-size: 14px;color: #666;width: 50px;padding-left: 76px;margin-top: 45px;}
 			#u-logintelipt{border: none;border-bottom: 1px solid #bbb;opacity: 100%;width: 260px;outline: none;}
+			#u-loginteltip{font-size: 12px;position: absolute;color: #DA6B6B;}
 			#u-loginpwd{font-size: 14px;color: #666;width: 50px;padding-left: 71px;margin: 0;margin-top: 20px;}
 			#u-loginpwdipt{border: none;border-bottom: 1px solid #bbb;opacity: 100%;width: 260px;outline: none;margin-top: 15px;}
 			#u-loginyzm{font-size: 14px;color: #666;width: 50px;padding-left: 76px;margin: 0;margin-top: 20px;}
 			#u-loginyzmipt{ border: none;border-bottom: 1px solid #bbb;opacity: 100%;width: 260px;outline: none; margin-top: 15px;}
 			#u-loginhqyzm{position: absolute;left: 310px;top:288px; text-decoration: none;font-size: 14px;color: #4AB3FF;font-family: "微软雅黑";}
 			.u-loginclear{clear: both;}
-			#u-loginyzmerr{ text-decoration: none;font-size: 14px;color: red;font-family: "微软雅黑";}
+			#u-loginyzmerr{ text-decoration: none;font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";}
 			#u-loginsmt{width: 260px;border-radius: 20px;opacity: 100%;height: 40px;background-color: #4AB3FF;border: none;outline: none;color: #fff;font-size: 16px;font-family: "微软雅黑";margin-top: 10px;}
 			#u-loginfgt{font-family: "微软雅黑"; text-decoration: none;color: #1E8AE8;font-size: 14px;color: #4AB3FF;margin-top: 60px;display: block;float: left;padding-left: 45px;font-weight: bold;}
 			#u-brand{color: #fff;font-family: "微软雅黑";font-size: 14px;position: relative;top: 30px;clear: both;}
@@ -123,6 +124,66 @@
 					}
 				}
 				
+				/*手机号文本框只能输入数字且为11位*/
+				$(function(){
+					$("#u-logintelipt").blur(function(){
+						if($("#u-logintelipt").val().length!=11&&$("#u-logintelipt").val()!=""){
+							$("#u-loginteltip").text("号码无效");
+						}else{
+							checkphoneisexist();
+						}
+						
+					});
+					$("#u-logintelipt").bind("input propertychange change",function(){
+						$("#u-logintelipt").keyup(function(){
+							this.value=this.value.replace(/[^0-9.]/g,'');
+						});
+						$("#u-logintelipt").attr("maxlength",11);
+					});
+					
+					/*发送请求验证手机号是否存在*/
+					function checkphoneisexist(){
+						var phoneObj={
+							phone:$("#u-logintelipt").val()
+						};
+						var jsonString=JSON.stringify(phoneObj);
+						ajaxHelper("post", Path, jsonString, successHandler, errorHandler);
+						/*如果手机好已经被注册过的话就显示手机已经被注册过*/
+					}
+					
+				});
+				
+				/*如果表单没填写数据则文本框显示红色提示边框*/
+				$(function(){
+					$("#u-loginsmt").click(function(){
+						if($("#u-logintelipt").val()==""||$("#u-loginpwdipt").val()==""
+						||$("#u-loginyzmipt").val()==""){
+							if($("#u-logintelipt").val()==""){
+								$("#u-logintelipt").css("border-bottom","1px solid #DA6B6B");
+							}
+							if($("#u-loginpwdipt").val()==""){
+								$("#u-loginpwdipt").css("border-bottom","1px solid #DA6B6B");
+							}
+							if($("#u-loginyzmipt").val()==""){
+								$("#u-loginyzmipt").css("border-bottom","1px solid #DA6B6B");
+							}
+							return false;
+						}else{
+							register();
+						}
+					});
+				});
+				
+				/*单击注册按钮进行注册，发送请求*/
+				function register(){
+					var registerObj={
+							phone:$("#u-logintelipt").val(),
+							password:$("#u-loginpwdipt").val(),
+						}
+					});
+					ajaxHelper("post", loginPath, loginObj, successHandler, errorHandler);
+				}
+				
 				/*单击获取验证码发送请求*/
 				$(function(){
 					$("#u-loginhqyzm").click(function(){
@@ -152,7 +213,7 @@
 			<form action="#" method="post">
 				<p id="u-logintitle">用一分钟来创建您的账户</p>
 				<p id="u-logintel">手机号</p>
-				<input type="text" id="u-logintelipt" />
+				<input type="text" id="u-logintelipt"/><span id="u-loginteltip"></span>
 				<p id="u-loginpwd">密码</p>
 				<input type="password" id="u-loginpwdipt" />
 				<p id="u-loginyzm">验证码</p>

@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>登录</title>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
 		<style type="text/css">
 			@media screen and (min-width:1680px ){
 				#g-logo{left:160px!important;top: 60px!important;}
@@ -43,7 +44,7 @@
 			#u-logintelipt{border: none;border-bottom: 1px solid #bbb;opacity: 100%;width: 260px;outline: none;}
 			#u-loginpwd{font-size: 14px;color: #666;width: 50px;padding-left: 71px;margin: 0;margin-top: 50px;}
 			#u-loginpwdipt{border: none;border-bottom: 1px solid #bbb;opacity: 100%;width: 260px;outline: none;margin-top: 15px;}
-			#u-loginsmt{width: 260px;border-radius: 20px;opacity: 100%;height: 40px;background-color: #4AB3FF;border: none;outline: none;color: #fff;font-size: 16px;font-family: "微软雅黑";margin-top: 55px;}
+			#u-loginsmt{width: 260px;border-radius: 20px;opacity: 100%;height: 40px;background-color: #4AB3FF;border: none;outline: none;color: #fff;font-size: 16px;font-family: "微软雅黑";margin-top: 40px;}
 			#u-loginagree{margin: 0;margin-top: 5px;font-size: 14px;color: #666;font-family: "微软雅黑";}
 			#u-loginagree a{text-decoration: none;color: #4AB3FF;}
 			#u-loginfgt{font-family: "微软雅黑"; text-decoration: none;color: #1E8AE8;font-size: 14px;color: #4AB3FF;margin-top: 45px;display: block;float: left;padding-left: 45px;font-weight: bold;}
@@ -55,7 +56,8 @@
 			#u-footer3{margin: 0;float:left;}
 			#u-footer4{margin: 0;float:right;}
 			#u-brand{color: #fff;font-family: "微软雅黑";font-size: 14px;position: relative;top: 90px;}
-			
+			/*登录失败*/
+			#u-loginfail{font-size: 14px;font-family: "微软雅黑";color: #DA6B6B;display: block;margin-top: 5px;}
 		</style>
 		<script type="text/javascript">
 			window.onload=function(){
@@ -80,6 +82,34 @@
 						pwdtext.setAttribute("style","color: #666;");
 					}
 				}
+			/*手机号文本框只能输入数字且为11位*/
+			$(function(){
+				$("#u-logintelipt").bind("input propertychange change",function(){
+					$("#u-logintelipt").keyup(function(){
+						this.value=this.value.replace(/[^0-9.]/g,'');
+					});
+					$("#u-logintelipt").attr("maxlength",11);
+				});
+			});
+			
+			
+			/*如果表单没填写数据则文本框显示红色提示边框*/
+			$(function(){
+				$("#u-loginsmt").click(function(){
+					if($("#u-logintelipt").val()==""||$("#u-loginpwdipt").val()==""){
+						if($("#u-logintelipt").val()==""){
+							$("#u-logintelipt").css("border-bottom","1px solid #DA6B6B");
+						}
+						if($("#u-loginpwdipt").val()==""){
+							$("#u-loginpwdipt").css("border-bottom","1px solid #DA6B6B");
+						}
+						return false;
+					}
+				});
+			});
+			
+			/*如果登录不成功则弹出提示框*/
+			
 		</script>
 	</head>
 	<body>
@@ -100,7 +130,8 @@
 				<p id="u-logintel">手机号</p>
 				<input type="text" id="u-logintelipt" />
 				<p id="u-loginpwd">密码</p>
-				<input type="text" id="u-loginpwdipt" />
+				<input type="text" id="u-loginpwdipt" /><br/>
+				<span id="u-loginfail">用户名或密码错误</span>
 				<input type="submit" value="登录" id="u-loginsmt"/>
 				<p id="u-loginagree">登录即表示您同意<a href="#">用户条款</a></p>
 				<a href="#" id="u-loginfgt">忘记密码</a>

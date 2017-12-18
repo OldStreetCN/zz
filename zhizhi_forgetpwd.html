@@ -119,6 +119,35 @@
 						}
 					}
 					
+					/*手机号文本框只能输入数字且为11位*/
+					$(function(){
+						$("#u-logintelipt").bind("input propertychange change",function(){
+							$("#u-logintelipt").keyup(function(){
+								this.value=this.value.replace(/[^0-9.]/g,'');
+							});
+							$("#u-logintelipt").attr("maxlength",11);
+						});
+					});
+					
+					/*如果表单没填写数据则文本框显示红色提示边框*/
+					$(function(){
+						$("#u-loginsmt").click(function(){
+							if($("#u-logintelipt").val()==""||$("#u-loginpwdipt").val()==""
+							||$("#u-loginyzmipt").val()==""){
+								if($("#u-logintelipt").val()==""){
+									$("#u-logintelipt").css("border-bottom","1px solid #DA6B6B");
+								}
+								if($("#u-loginpwdipt").val()==""){
+									$("#u-loginpwdipt").css("border-bottom","1px solid #DA6B6B");
+								}
+								if($("#u-loginyzmipt").val()==""){
+									$("#u-loginyzmipt").css("border-bottom","1px solid #DA6B6B");
+								}
+								return false;
+							}
+						});
+					});
+					
 				}
 		</script>
 	</head>
