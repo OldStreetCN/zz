@@ -2,8 +2,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
 		<title>登录</title>
 		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+		<link rel="stylesheet" href="css/ie8banben.css" />
 		<style type="text/css">
 			@media screen and (min-width:1680px ){
 				#g-logo{left:160px!important;top: 60px!important;}
@@ -60,6 +62,7 @@
 			#u-loginfail{font-size: 14px;font-family: "微软雅黑";color: #DA6B6B;display: block;margin-top: 5px;}
 		</style>
 		<script type="text/javascript">
+			
 			window.onload=function(){
 					var tel=document.getElementById("u-logintelipt");
 					var teltext=document.getElementById("u-logintel");
@@ -113,6 +116,36 @@
 		</script>
 	</head>
 	<body>
+		<script type="text/javascript">
+			window.onload=function(){
+				var a =parseFloat(navigator.appVersion);
+				if(a<5){
+					document.getElementById("g-banbenmask").setAttribute("class","u-banbenbrowser");
+					document.getElementById("g-banbenmask").setAttribute("hidden",false);
+					document.getElementById("g-banbenmask").style.width=document.documentElement.clientWidth;
+					document.getElementById("g-banbenmask").style.height=document.documentElement.clientHeight;
+					document.getElementById("g-banbenDiv").setAttribute("class","u-banbenmess");
+					document.getElementById("g-banbenDiv").setAttribute("hidden",false);
+				}
+			}
+		</script>
+		<div id="g-banbenmask" hidden=""></div>
+		<div id="g-banbenDiv" hidden="">
+			<span id="u-banbentitle">当前浏览器版本过低，请升级您的浏览器。</span>
+			<a href="http://www.firefox.com.cn/"><img id="u-firefox" src="img/firefox.png" /></a>
+			<span id="u-firefoxtext">火狐</span>
+			<a href="http://www.google.cn/intl/zh-CN/chrome/"><img id="u-chrome" src="img/Chrome.png" /></a>
+			<span id="u-chrometext">Chrome</span>
+			<span id="u-tuijian">推荐</span>
+			<a href="http://rj.baidu.com/soft/detail/14917.html?ald"><img id="u-ie" src="img/Shape 1119.png" /></a>
+			<span id="u-ietext">IE 10</span>
+			<a href="http://www.opera.com/zh-cn"><img id="u-opear" src="img/opera.png" /></a>
+			<span id="u-operatext">Opera</span>
+			<a href="http://se.360.cn/"><img id="u-360" src="img/Shape 1119 拷贝.png" /></a>
+			<span id="u-360text">360</span>
+			<span id="u-tuijian2">推荐</span>
+			<span id="u-download">点击图标进入官方下载页</span>
+		</div>
 		<div id="g-logo">
 			<img id="u-logoimg" src="img/logo_white.svg" />
 			<div id="u-logourl">zhizhiyun.cn</div>

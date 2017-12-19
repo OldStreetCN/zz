@@ -79,7 +79,7 @@
 			#u-fomjiaoshiupbtn{height: 40px;width: 83px;margin-left: 5px;background-color: #fff;font-size: 14px;border: none;border-radius: 5px;border: 1px solid #37BDDF;outline: none;color: #37BDDF;}
 			#u-fomjiaoshitooltip2{height: 10px;width: 400px;font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";margin-left: 90px;}
 			#u-fomjiaoshisubmit{ height: 50px;width: 260px;margin-left:150px;margin-top: 80px; background-color: #fff;font-size: 14px;border: none;border-radius: 5px;border: 1px solid #37BDDF;outline: none;color: #37BDDF;}
-			#u-fomjiaoshitooltip3{margin-top: 20px; height: 10px;width: 300px;font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";margin-left: 145px;}
+			#u-fomjiaoshitooltip3{margin-top: 20px; height: 10px;width: 300px;font-size: 12px;color: #DA6B6B;font-family: "微软雅黑";margin-left: 135px;}
 			#u-fomwenjianshangchuanclose{height: 20px;width: 20px;position: absolute;left: 365px;top: 10px;}
 			#u-fomfindpwd{font-size: 12px;	color: #1E8AE8;font-family: "微软雅黑";}
 		</style>
@@ -140,15 +140,25 @@
 					}
 				});
 				
-				/*当鼠标移动到提交按钮上就改变样式*/
+				/*机构拥有者按钮 ：当鼠标移动到提交按钮上就改变样式*/
 				$("#u-fomsubmit").mouseover(function(){
 					$("#u-fomsubmit").css("background-color","#37BDDF");
 					$("#u-fomsubmit").css("color","#fff");
 				});
-				/*鼠标离开时改变样式*/
+				/*机构拥有者按钮： 鼠标离开时改变样式*/
 				$("#u-fomsubmit").mouseleave(function(){
 					$("#u-fomsubmit").css("background-color","#fff");
 					$("#u-fomsubmit").css("color","#37BDDF");
+				});
+				/*教师或者员工按钮：当鼠标移动到提交按钮上就改变样式*/
+				$("#u-fomjiaoshisubmit").mouseover(function(){
+					$("#u-fomjiaoshisubmit").css("background-color","#37BDDF");
+					$("#u-fomjiaoshisubmit").css("color","#fff");
+				});
+				/*教师或者员按钮： 鼠标离开时改变样式*/
+				$("#u-fomjiaoshisubmit").mouseleave(function(){
+					$("#u-fomjiaoshisubmit").css("background-color","#fff");
+					$("#u-fomjiaoshisubmit").css("color","#37BDDF");
 				});
 			});
 			
@@ -217,9 +227,9 @@
 			});
 			
 			/*这里是设置当表单填写成功的时候显示蓝色的框框*/
-			$(function(){
+			/*$(function(){
 				
-			});
+			});*/
 			
 			/*选择机构拥有者时的操作*/
 			$(function(){
@@ -250,13 +260,18 @@
 							$("#u-fomzhizhaoipt").css("border","1px solid #DA6B6B");
 						}
 						return false;
+					}else{
+						/*我是机构拥有者：提交并审核 :发送请求*/
+						submitjigouformmess();
+						
 					}
 				});
 				
 				/*当机构拥有者的表单内的不为空时边框改为默认的颜色*/
 				$("#u-fomjigouquanchengipt").blur(function(){
 					if($("#u-fomjigouquanchengipt").val()!=""&&$("#u-fomjigouquanchengipt").val()!="     例：北京松果互联信息有限公司"){
-						$("#u-fomjigouquanchengipt").css("border","1px solid #22AC38");
+					checkjigoucompanyisexist();
+					/*$("#u-fomjigouquanchengipt").css("border","1px solid #22AC38");*/
 					}
 				});
 				$("#u-fomzuzhidaimaipt").blur(function(){
@@ -276,7 +291,8 @@
 				});
 				$("#u-fomidnumbeript").blur(function(){
 					if($("#u-fomidnumbeript").val()!=""&&$("#u-fomidnumbeript").val()!="     例：1101010198001010011"){
-						$("#u-fomidnumbeript").css("border","1px solid #22AC38");
+						/*$("#u-fomidnumbeript").css("border","1px solid #22AC38");*/
+						checkjigouidnumberisexist();
 					}
 				});
 				$("#u-fomzhizhaoipt").blur(function(){
@@ -285,6 +301,67 @@
 					}
 				});
 			});
+			
+			function successHandler(data){
+				alert("success");
+				/*当机构拥有者的公司全称名称没有被注册的时候*/
+				/*当机构拥有者的公司全称被注册过的时候*/
+				/*当机构拥有者的身份证号已被注册的时候*/
+				/*当机构拥有者的身份证号没有被注册的时候*/
+				/*当提交机构拥有者表单成功的时候*/
+				
+			}
+			
+			/*当机构拥有者的公司全称名称没有被注册的时候*/
+			function jigoucompanynamesuccess(){
+				/*这个文本框的颜色设置为绿色，并且提示消失，提交按钮设置为可用状态*/	
+			}
+			/*当机构拥有者的公司全称已经被注册的时候*/
+			function jigoucompanynamefail(){
+				/*这个文本框的颜色设置为红色，并且提示西显示，提交按钮设置为不可用*/	
+			}
+			/*当机构拥有者的身份证号没有被注册的时候*/
+			function jigoucompanynamesuccess(){
+				/*这个文本框的颜色设置为绿色，并且提示消失，提交按钮设置为可用状态*/	
+			}
+			/*当机构拥有者的身份证号已经被注册的时候*/
+			function jigoucompanynamesuccess(){
+				/*这个文本框的颜色设置为红色，并且提示显示，提交按钮设置为不可用状态*/	
+			}
+			/*当提交机构拥有者表单成功的时候*/
+			
+			
+			
+			/*提交我是机构拥有者的表单信息*/
+			function submitjigouformmess(){
+				var jigouObj={
+					jigouquancheng:$("#u-fomjigouquanchengipt").val(),
+					zuzhijigoudaima:$("#u-fomzuzhidaimaipt").val(),
+					gongsijiancheng:$("#u-fomjianchengipt").val(),
+					username:$("#u-fomjiaoshiusernameipt").val(),
+					idnumber:$("#u-fomidnumbeript").val(),
+					zhizhao:$("#u-fomzhizhaoipt").val()
+				};
+				var jsonString =JSON.stringify(jigouObj);
+				ajaxHelper("post", Path, jsonString, successHandler, errorHandler);
+			}
+			
+			/*当我是机构拥有者的时候：机构全称的请求*/
+			function checkjigoucompanyisexist(){
+				var jigoucompanyObj={
+					jigoutext:$("#u-fomjigouquanchengipt").val()
+				};
+				var jsonString=JSON.stringify(jigoucompanyObj);
+				ajaxHelper("post", Path, jsonString, successHandler, errorHandler);
+			}
+			/*当我是机构拥有者的时候：身份证号的请求*/
+			function checkjigouidnumberisexist(){
+				var jigouidnumberObj={
+					idnumbertext:$("#u-fomidnumbeript").val()
+				};
+				var jsonString=JSON.stringify(jigouidnumberObj);
+				ajaxHelper("post", Path, jsonString, successHandler, errorHandler);
+			}
 			
 			
 			/*机构拥有者文件上传专区*/
@@ -507,10 +584,9 @@
 				});
 			});
 			
-			/*我是机构拥有者的时候发送请求*/
-			$(function(){
-				
-			});
+			
+			/*我是机构拥有者的时候发送请求*/			
+			
 			
 			/*我是教师或者员工的时候发送请求*/
 			/*所属机构输入框：输入六个字以上，查找数据库中的相应数据，如果有则列出在下面*/
@@ -604,7 +680,7 @@
 					<input type="button" value="上传" id="u-fomjiaoshiupbtn"/><br />
 					<p id="u-fomjiaoshitooltip2">请保持身份证号清晰</p>
 					<input type="submit" value="提交并等待审核" id="u-fomjiaoshisubmit" />
-					<p id="u-fomjiaoshitooltip3">工作日30分钟内完成审核，审核成功将以短信通知</p>
+					<p id="u-fomjiaoshitooltip3">信息将由机构进行审核，请向机构管理员咨询审核结果</p>
 				</div>
 			</form>
 		</div>
